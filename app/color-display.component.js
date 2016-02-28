@@ -1,4 +1,4 @@
-System.register(['angular2/core', './color-display.component'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,34 +10,33 @@ System.register(['angular2/core', './color-display.component'], function(exports
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, color_display_component_1;
-    var Palette;
+    var core_1;
+    var ColorDisplay;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (color_display_component_1_1) {
-                color_display_component_1 = color_display_component_1_1;
             }],
         execute: function() {
-            Palette = (function () {
-                function Palette() {
-                    this.currentColor = '#b23b23';
+            ColorDisplay = (function () {
+                function ColorDisplay() {
                 }
-                Palette = __decorate([
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', String)
+                ], ColorDisplay.prototype, "color", void 0);
+                ColorDisplay = __decorate([
                     core_1.Component({
-                        selector: 'palette',
-                        template: "\n\t\t<h1>Palette</h1>\n\t\t<color-display [color]=\"currentColor\"></color-display>\n\t\t",
-                        directives: [color_display_component_1.ColorDisplay],
-                        styles: ["\n\t\tcolor-display: {\n\t\t\tdisplay: block;\n\t\t}\n\t"]
+                        selector: 'color-display',
+                        template: "\n\t\t<div [style.backgroundColor]=\"color\">\n\t\t</div>\n\t",
+                        styles: ["\n\t\tdiv {\n\t\t\theight: 150px;\n\t\t\twidth: 150px;\n\t\t}\n\t"]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], Palette);
-                return Palette;
+                ], ColorDisplay);
+                return ColorDisplay;
             }());
-            exports_1("Palette", Palette);
+            exports_1("ColorDisplay", ColorDisplay);
         }
     }
 });
-//# sourceMappingURL=palette.component.js.map
+//# sourceMappingURL=color-display.component.js.map
