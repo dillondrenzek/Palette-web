@@ -1,4 +1,4 @@
-System.register(['angular2/core', './color-display.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './color-display.component', './color-input.component', './color.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './color-display.component'], function(exports
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, color_display_component_1;
+    var core_1, color_display_component_1, color_input_component_1, color_service_1;
     var Palette;
     return {
         setters:[
@@ -19,20 +19,35 @@ System.register(['angular2/core', './color-display.component'], function(exports
             },
             function (color_display_component_1_1) {
                 color_display_component_1 = color_display_component_1_1;
+            },
+            function (color_input_component_1_1) {
+                color_input_component_1 = color_input_component_1_1;
+            },
+            function (color_service_1_1) {
+                color_service_1 = color_service_1_1;
             }],
         execute: function() {
             Palette = (function () {
-                function Palette() {
+                function Palette(colorService) {
+                    var _this = this;
+                    this.colorService = colorService;
                     this.currentColor = '#b23b23';
+                    colorService.setColor$.subscribe(function (color) {
+                        _this.currentColor = color;
+                        console.log('currentColor set:', color);
+                    });
+                    colorService.setColor('#1ce');
+                    colorService.setColor('#b23b23');
                 }
                 Palette = __decorate([
                     core_1.Component({
                         selector: 'palette',
-                        template: "\n\t\t<h1>Palette</h1>\n\t\t<color-display [color]=\"currentColor\"></color-display>\n\t\t",
-                        directives: [color_display_component_1.ColorDisplay],
-                        styles: ["\n\t\tcolor-display: {\n\t\t\tdisplay: block;\n\t\t}\n\t"]
+                        template: "\n\t\t<h1>Palette</h1>\n\t\t<color-display [color]=\"currentColor\"></color-display>\n\t\t<color-input [color]=\"currentColor\"></color-input>\n\t\t",
+                        directives: [color_display_component_1.ColorDisplay, color_input_component_1.ColorInput],
+                        styles: ["\n\t\tcolor-display,\n\t\tcolor-input {\n\t\t\tdisplay: block;\n\t\t}\n\t"],
+                        providers: [color_service_1.ColorService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [color_service_1.ColorService])
                 ], Palette);
                 return Palette;
             }());

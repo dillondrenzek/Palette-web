@@ -11,7 +11,7 @@ System.register(['angular2/core', './color.service'], function(exports_1, contex
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, color_service_1;
-    var ColorDisplay;
+    var ColorInput;
     return {
         setters:[
             function (core_1_1) {
@@ -21,30 +21,36 @@ System.register(['angular2/core', './color.service'], function(exports_1, contex
                 color_service_1 = color_service_1_1;
             }],
         execute: function() {
-            ColorDisplay = (function () {
-                function ColorDisplay(colorService) {
+            ColorInput = (function () {
+                function ColorInput(colorService) {
                     var _this = this;
                     this.colorService = colorService;
-                    colorService.setColor$.subscribe(function (color) {
+                    this.subscription = colorService.setColor$.subscribe(function (color) {
                         _this.color = color;
                     });
                 }
+                ColorInput.prototype.submitColor = function (color) {
+                    this.colorService.setColor(color);
+                };
+                ColorInput.prototype.ngOnDestroy = function () {
+                    this.subscription.unsubscribe();
+                };
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', String)
-                ], ColorDisplay.prototype, "color", void 0);
-                ColorDisplay = __decorate([
+                ], ColorInput.prototype, "color", void 0);
+                ColorInput = __decorate([
                     core_1.Component({
-                        selector: 'color-display',
-                        template: "\n\t\t<div [style.backgroundColor]=\"color\"></div>\n\t",
-                        styles: ["\n\t\tdiv {\n\t\t\theight: 150px;\n\t\t\twidth: 150px;\n\t\t\tborder: 1px solid black;\n\t\t}\n\t"]
+                        selector: 'color-input',
+                        template: "\n\t<div>\n\t\t<input #box type=\"text\" name=\"color\" (keyup.enter)=\"submitColor(box.value)\" value=\"{{color}}\">\n\t</div>\n\t",
+                        styles: [""]
                     }), 
                     __metadata('design:paramtypes', [color_service_1.ColorService])
-                ], ColorDisplay);
-                return ColorDisplay;
+                ], ColorInput);
+                return ColorInput;
             }());
-            exports_1("ColorDisplay", ColorDisplay);
+            exports_1("ColorInput", ColorInput);
         }
     }
 });
-//# sourceMappingURL=color-display.component.js.map
+//# sourceMappingURL=color-input.component.js.map
