@@ -23,6 +23,7 @@ System.register(['angular2/core', 'rxjs/Subject'], function(exports_1, context_1
         execute: function() {
             ColorService = (function () {
                 function ColorService() {
+                    this.color = '#b23b23';
                     // Observable string sources
                     this._colorSetSource = new Subject_1.Subject();
                     // Observable string streams

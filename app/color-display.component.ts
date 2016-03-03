@@ -8,21 +8,18 @@ import { ColorService } from './color.service';
 	`,
 	styles: [`
 		div {
-			height: 150px;
-			width: 150px;
-			border: 1px solid black;
+			height: 100%;
+			width: 100%;
 		}
 	`]
 })
 
 export class ColorDisplay {
-	@Input() color: string;
+	color: string;
 
 	constructor(private colorService: ColorService){
-		colorService.setColor$.subscribe(
-			color => {
-				this.color = color;
-			}
-		)
+		colorService.setColor$.subscribe((color) => {
+			this.color = color;
+		});
 	}
 }

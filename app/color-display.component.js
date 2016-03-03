@@ -29,15 +29,11 @@ System.register(['angular2/core', './color.service'], function(exports_1, contex
                         _this.color = color;
                     });
                 }
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', String)
-                ], ColorDisplay.prototype, "color", void 0);
                 ColorDisplay = __decorate([
                     core_1.Component({
                         selector: 'color-display',
                         template: "\n\t\t<div [style.backgroundColor]=\"color\"></div>\n\t",
-                        styles: ["\n\t\tdiv {\n\t\t\theight: 150px;\n\t\t\twidth: 150px;\n\t\t\tborder: 1px solid black;\n\t\t}\n\t"]
+                        styles: ["\n\t\tdiv {\n\t\t\theight: 100%;\n\t\t\twidth: 100%;\n\t\t}\n\t"]
                     }), 
                     __metadata('design:paramtypes', [color_service_1.ColorService])
                 ], ColorDisplay);

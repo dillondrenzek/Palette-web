@@ -5,6 +5,8 @@ import { Subject } from 'rxjs/Subject';
 
 export class ColorService {
 
+	color: string = '#b23b23';
+
 	// Observable string sources
 	private _colorSetSource = new Subject<string>();
 
@@ -14,4 +16,5 @@ export class ColorService {
 	setColor(color: string){
 		this._colorSetSource.next(color);
 	}
+	
 }
