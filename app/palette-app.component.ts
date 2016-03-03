@@ -6,7 +6,9 @@ import { ColorService } from './color.service';
 @Component({
 	selector: 'palette-app',
 	template: `
-		<h1>Palette</h1>
+		<div id="overlay">
+			<h1>Palette</h1>
+		</div>
 		<div id="centered-display">
 			<color-display></color-display>
 			<color-input></color-input>
@@ -33,15 +35,26 @@ import { ColorService } from './color.service';
 
 		}
 
-		#centered-display {
-			border: #aeaeae;
-			width: 50%;
-			height: 50%;
+		#centered-display,
+		#overlay {
+			width: 100%;
+			height: 100%;
 			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+		}
+
+		#centered-display {
+			z-index: 0;
+		}
+
+		#overlay {
+			z-index: 10;
+		}
+
+		h1 {
+			padding: 15px;
+			font-family: helvetica;
+			letter-spacing: -0.025em;
+			font-size: 2rem;
 		}
 	`],
 	providers: [ColorService]
