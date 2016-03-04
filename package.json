@@ -1,10 +1,12 @@
 {
-  "name": "angular2-quickstart",
-  "version": "1.0.0",
+  "name": "palette",
+  "version": "0.1.0",
   "scripts": {
-    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
+    "start": "concurrent \"npm run tsc:w\" \"stylus:w\" \"npm run lite\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
+    "stylus": "stylus ../../app/**/*.styl",
+    "stylus:w": "stylus --watch < *.styl",
     "lite": "lite-server",
     "typings": "typings",
     "postinstall": "typings install"
