@@ -19,13 +19,13 @@
 	    <script>
 	      System.config({
 	        packages: {
-	          app: {
+	          built: {
 	            format: 'register',
 	            defaultExtension: 'js'
 	          }
 	        }
 	      });
-	      System.import('app/main')
+	      System.import('built/js/main')
 	            .then(null, console.error.bind(console));
 	    </script>
 		<style>

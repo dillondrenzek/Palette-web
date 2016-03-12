@@ -1,5 +1,5 @@
 import { Component, Input } from 'angular2/core';
-import { ColorService } from './color.service';
+import { ColorService } from '../../services/color.service';
 
 @Component({
 	selector: 'color-display',

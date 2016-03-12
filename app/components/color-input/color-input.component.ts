@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnDestroy } from 'angular2/core';
-import { ColorService } from './color.service';
+import { ColorService } from '../../services/color.service';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({

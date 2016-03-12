@@ -1,7 +1,7 @@
 import { Component, Output, Input } from 'angular2/core';
-import { ColorDisplay } from './color-display.component';
-import { ColorInput } from './color-input.component';
-import { ColorService } from './color.service';
+import { ColorDisplay } from './color-display/color-display.component';
+import { ColorInput } from './color-input/color-input.component';
+import { ColorService } from '../services/color.service';
 
 @Component({
 	selector: 'palette-app',
