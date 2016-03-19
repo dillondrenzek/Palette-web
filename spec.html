@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>Commuter Spec</title>
+    <link rel="stylesheet" href="node_modules/jasmine-core/lib/jasmine-core/jasmine.css">
+    <script src="node_modules/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+    <script src="node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+    <script src="node_modules/jasmine-core/lib/jasmine-core/boot.js"></script>
+
+
+    <!-- #1. add the system.js library -->
+    <!-- #1. add the system.js and angular libraries -->
+    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/http.dev.js"></script>
+    <script>
+      // #2. Configure SystemJS to use the .js extension
+      //     for imports from the built folder
+      System.config({
+        packages: {
+          'built': {
+            defaultExtension: 'js'
+          }
+        }
+      });
+
+      // #3. Import the spec file explicitly
+        Promise.all([
+          System.import('built/js/models/trip.spec'),
+          // System.import('built/js/services/trips-service.spec'),
+          // System.import('built/js/components/new-trip-form/new-trip-form.spec'),
+          // System.import('built/js/components/trips-list/trips-list.spec')
+          ])
+          .then(window.onload)
+          .catch(console.error.bind(console));
+
+    </script>
+  </head>
+  <body>
+
+
+
+
+  </body>
+</html>
