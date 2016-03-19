@@ -4,31 +4,29 @@
 		<meta charset="utf-8">
 		<title>Palette</title>
 
-
 		<!-- 1. Load libraries -->
-    <!-- IE required polyfills, in this exact order -->
-    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+	    <!-- IE required polyfills, in this exact order -->
+	    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+	    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
 
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+	    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+	    <script src="node_modules/systemjs/dist/system.src.js"></script>
+	    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+	    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+			<script src="node_modules/angular2/bundles/http.dev.js"></script>
 
-    <!-- 2. Configure SystemJS -->
-    <script>
-      System.config({
-        packages: {
-          built: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        }
-      });
-      System.import('built/js/main')
-						.then(null, console.error.bind(console));
-    </script>
-
+	  <!-- 2. Configure SystemJS -->
+	    <script>
+	      System.config({
+	        packages: {
+	          built: {
+	            format: 'register',
+	            defaultExtension: 'js'
+	          }
+	        }
+	      });
+				System.import('built/js/boot').then(null, console.error.bind(console));
+	    </script>
 		<style>
 			*,
 			*:before,
@@ -38,15 +36,24 @@
 				padding: 0;
 			}
 
-			palette-app {
+			html {
+				font-size: 16px;
+				letter-spacing: 0.05em;
+			}
+
+			body {
+				width: 100%;
+			}
+
+			commuter-app {
 				position: absolute;
 				display: block;
 				width: 100%;
-				height: 100%;
 			}
 		</style>
 	</head>
 	<body>
-		<palette-app></palette-app>
+		<!-- <commuter-app></commuter-app> -->
+		<h1>Palette</h1>
 	</body>
 </html>
