@@ -1,22 +1,25 @@
 {
   "name": "palette",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "scripts": {
-    "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "start": "concurrently \"npm run tsc:w\" \"npm run style:w\" \"npm run lite\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
     "typings": "typings",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+
+    "style:w": "gulp watch:styl"
   },
   "license": "ISC",
   "dependencies": {
     "angular2": "2.0.0-beta.7",
-    "systemjs": "0.19.22",
+    "bootstrap": "^3.3.6",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
+    "systemjs": "0.19.22",
     "zone.js": "0.5.15"
   },
   "devDependencies": {

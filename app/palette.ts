@@ -1,7 +1,7 @@
 import { Component } from 'angular2/core';
 
 @Component({
-	selector:'app',
+	selector: 'app',
 	templateUrl: 'app/palette.html',
 	styleUrls: ['built/css/palette.css']
 })
