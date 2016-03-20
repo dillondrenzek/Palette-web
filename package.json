@@ -1,6 +1,6 @@
 {
   "name": "palette",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "scripts": {
     "start": "concurrently \"npm run tsc:w\" \"npm run style:w\" \"npm run lite\" ",
     "tsc": "tsc",
