@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "scripts": {
     "start": "concurrently \"npm run tsc:w\" \"npm run style:w\" \"npm run lite\" ",
+    "test": "live-server --open=spec.html",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",

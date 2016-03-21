@@ -30,10 +30,7 @@
 
       // #3. Import the spec file explicitly
         Promise.all([
-          // System.import('built/js/models/trip.spec'),
-          // System.import('built/js/services/trips-service.spec'),
-          // System.import('built/js/components/new-trip-form/new-trip-form.spec'),
-          // System.import('built/js/components/trips-list/trips-list.spec')
+          System.import('built/js/models/Color.spec')
           ])
           .then(window.onload)
           .catch(console.error.bind(console));

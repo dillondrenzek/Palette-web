@@ -1,5 +1,7 @@
 import { Component, Input } from 'angular2/core';
 
+import { ActiveColorService } from '../services/active-color-service';
+
 
 @Component({
 	selector: 'swatch',
@@ -13,11 +15,18 @@ import { Component, Input } from 'angular2/core';
 			height: 250px;
 			width: 250px;
 		}
-		`]
+		`],
+	providers: [ActiveColorService]
 })
 
 export class Swatch {
 	@Input() color: string;
 	@Input() width: string;
 	@Input() height: string;
+
+	constructor ( private _activeColorService: ActiveColorService ) { }
+
+	ngOnInit() {
+		this.color = this._activeColorService.activeColor;
+	}
 }
