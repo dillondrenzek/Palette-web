@@ -59,7 +59,34 @@ describe('Color', () => {
 
 
 
+	describe(':: Color.isColorName', () => {
+		it('- returns a boolean', () => {
+			expect(typeof Color.isColorName('')).toEqual('boolean');
+		});
 
+		it('- should accept a certain list of names', () => {
+			expect(Color.isColorName('red')).toBe(true);
+			expect(Color.isColorName('orange')).toBe(true);
+			expect(Color.isColorName('yellow')).toBe(true);
+			expect(Color.isColorName('green')).toBe(true);
+			expect(Color.isColorName('blue')).toBe(true);
+			expect(Color.isColorName('purple')).toBe(true);
+			expect(Color.isColorName('white')).toBe(true);
+			expect(Color.isColorName('black')).toBe(true);
+		});
+
+		it('- should not accept compound names', () => {
+			expect(Color.isColorName('redorange')).toBe(false);
+			expect(Color.isColorName('reallyred')).toBe(false);
+			expect(Color.isColorName('green red')).toBe(false);
+		});
+
+		it('- should not accept capitalized names', () => {
+			expect(Color.isColorName('Red')).toBe(false);
+			expect(Color.isColorName('green')).toBe(true);
+		});
+
+	});
 
 
 
@@ -137,6 +164,15 @@ describe('Color', () => {
 			expect(Color.isValid('rgb(12,12,12)')).toBe(true);
 			expect(Color.isValid('rgb(123,123,123)')).toBe(true);
 		});
+
+		it('- should accept hsl values', () => {
+			expect(Color.isValid('hsl(0, 0, 0)')).toBe(true);
+			expect(Color.isValid('hsl(360, 100, 100)')).toBe(true);
+			expect(Color.isValid('hsl(360, 100%, 100)')).toBe(true);
+			expect(Color.isValid('hsl(360, 100%, 100%)')).toBe(true);
+			expect(Color.isValid('hsl(360, 100, 100%)')).toBe(true);
+		});
+
 
 	});
 

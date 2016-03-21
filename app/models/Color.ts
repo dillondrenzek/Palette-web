@@ -38,7 +38,7 @@ export class Color {
 	}
 
 	static isColorName(s: string): boolean {
-		var colorNames: RegExp = /(red|orange|yellow|green|blue|purple|white|black)/;
+		var colorNames: RegExp = /^(red|orange|yellow|green|blue|purple|white|black)$/;
 		return colorNames.test(s);
 	}
 
