@@ -1,5 +1,10 @@
 import { Color } from './Color';
 
+declare var describe: any;
+declare var beforeEach: any;
+declare var it: any;
+declare var expect: any;
+
 describe('Color', () => {
 	let color: Color;
 
@@ -7,7 +12,7 @@ describe('Color', () => {
 		color = new Color('#345789');
 	});
 
-	describe(':: Color.isHex', () => {
+	describe(':: isHex', () => {
 
 		it('- returns a boolean', () => {
 			expect(typeof Color.isHex('')).toEqual('boolean');
@@ -59,7 +64,7 @@ describe('Color', () => {
 
 
 
-	describe(':: Color.isColorName', () => {
+	describe(':: isColorName', () => {
 		it('- returns a boolean', () => {
 			expect(typeof Color.isColorName('')).toEqual('boolean');
 		});
@@ -91,7 +96,7 @@ describe('Color', () => {
 
 
 
-	describe(':: Color.isRGB', () => {
+	describe(':: isRGB', () => {
 
 		it('- returns a boolean', () => {
 			expect(typeof Color.isRGB('')).toEqual('boolean');
@@ -120,9 +125,90 @@ describe('Color', () => {
 			expect(Color.isRGB('rgb(25,25,25)')).toBe(true);
 		});
 
+		it('- should accept values with spaces', () => {
+			expect(Color.isRGB('rgb(0, 0, 0)')).toBe(true);
+			expect(Color.isRGB('rgb(0 ,0 ,0)')).toBe(true);
+			expect(Color.isRGB('rgb(0,0 ,0)')).toBe(true);
+			expect(Color.isRGB('rgb(0, 0,0 )')).toBe(true);
+		});
+
 		it('- should reject values that don\'t start with \'rgb\'', () => {
 			expect(Color.isRGB('rbg(255,255,255)')).toBe(false);
 		});
+	});
+
+
+
+	describe(':: isHSL', () => {
+
+		it('- returns a boolean', () => {
+			expect(typeof Color.isHSL('')).toEqual('boolean');
+		});
+
+		it('- should accept values that begin with hsl', () => {
+			expect(Color.isHSL('hsl(0,0,0)')).toBe(true);
+			expect(Color.isHSL('shl(0,0,0)')).toBe(false);
+			expect(Color.isHSL('(0,0,0)')).toBe(false);
+			expect(Color.isHSL('(0,0,0)hsl')).toBe(false);
+		});
+
+		it('- should reject negative values', () => {
+			expect(Color.isHSL('hsl(-1,-21,-31%)')).toBe(false);
+		});
+
+		it('- should accept Hue values between 0 and 360', () => {
+			expect(Color.isHSL('hsl(0,0,0)')).toBe(true);
+			expect(Color.isHSL('hsl(360,0,0)')).toBe(true);
+			expect(Color.isHSL('hsl(361,0,0)')).toBe(false);
+		});
+
+
+		it('- should accept values with a Saturation value between 0 and 100', () => {
+			expect(Color.isHSL('hsl(0,0,0)')).toBe(true);
+			expect(Color.isHSL('hsl(0,100,0)')).toBe(true);
+			expect(Color.isHSL('hsl(0,101,0)')).toBe(false);
+		});
+
+		it('- should accept values with a Lightness value between 0 and 100', () => {
+			expect(Color.isHSL('hsl(0,0,0)')).toBe(true);
+			expect(Color.isHSL('hsl(0,0,100)')).toBe(true);
+			expect(Color.isHSL('hsl(0,0,101)')).toBe(false);
+		});
+
+
+		it('- should accept only 3 values', () => {
+			expect(Color.isHSL('hsl(0)')).toBe(false);
+			expect(Color.isHSL('hsl(0,0)')).toBe(false);
+			expect(Color.isHSL('hsl(0,0,)')).toBe(false);
+			expect(Color.isHSL('hsl(0,0,0,)')).toBe(false);
+			expect(Color.isHSL('hsl(0,0,0,0)')).toBe(false);
+		});
+
+		it('- should accept 3 values enclosed in parenthesis', () => {
+			expect(Color.isHSL('hsl(0,0,0)')).toBe(true);
+			expect(Color.isHSL('hsl0,0,0)')).toBe(false);
+			expect(Color.isHSL('hsl 0,0,0')).toBe(false);
+			expect(Color.isHSL('hsl(0,0,0')).toBe(false);
+		});
+
+		it('- should accept values with spaces', () => {
+			expect(Color.isHSL('hsl(0, 0, 0)')).toBe(true);
+			expect(Color.isHSL('hsl(0 ,0 ,0)')).toBe(true);
+			expect(Color.isHSL('hsl(0,0 ,0)')).toBe(true);
+			expect(Color.isHSL('hsl(0, 0,0 )')).toBe(true);
+		});
+
+		it('- should accept percentage values', () => {
+			expect(Color.isHSL('hsl(0%,0%,0%)')).toBe(true);
+			expect(Color.isHSL('hsl(100%,50%,1%)')).toBe(true);
+			expect(Color.isHSL('hsl(360%,0%,0%)')).toBe(false);
+			expect(Color.isHSL('hsl(360,0%,0%)')).toBe(true);
+			expect(Color.isHSL('hsl(0%,101%,0%)')).toBe(false);
+			expect(Color.isHSL('hsl(0%,99,0%)')).toBe(true);
+			expect(Color.isHSL('hsl(0%,0%,-31%)')).toBe(false);
+			expect(Color.isHSL('hsl(0%,0%,31)')).toBe(true);
+		});
+
 	});
 
 
@@ -132,12 +218,8 @@ describe('Color', () => {
 
 
 
-
-
-
-
 	// Color isValid is a test for strings which a Color can be initialized
-	describe(':: Color.isValid', () => {
+	describe(':: isValid', () => {
 
 		it('- returns a boolean', () => {
 			expect(typeof Color.isValid('')).toEqual('boolean');
@@ -171,6 +253,7 @@ describe('Color', () => {
 			expect(Color.isValid('hsl(360, 100%, 100)')).toBe(true);
 			expect(Color.isValid('hsl(360, 100%, 100%)')).toBe(true);
 			expect(Color.isValid('hsl(360, 100, 100%)')).toBe(true);
+			expect(Color.isValid('hsl(100%, 100%, 100%)')).toBe(true);
 		});
 
 
