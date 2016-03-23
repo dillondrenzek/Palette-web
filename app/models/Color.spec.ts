@@ -1,11 +1,83 @@
 import { Color } from './Color';
 
+declare var xit: any;
+declare var xdescribe: any;
 declare var describe: any;
 declare var beforeEach: any;
 declare var it: any;
 declare var expect: any;
 
-describe('Color', () => {
+describe('Color Model', () => {
+	describe(':: rgbValue()', () => {
+		xit('- should return a string', () => {});
+		xit('- should return a valid Color', () => {});
+		xit('- should return a valid RGB string', () => {});
+	});
+	describe(':: hexValue()', () => {
+		xit('- should return a string', () => {});
+		xit('- should return a valid Color', () => {});
+		xit('- should return a valid hex string', () => {});
+	});
+	describe(':: hslValue()', () => {
+		xit('- should return a string', () => {});
+		xit('- should return a valid Color', () => {});
+		xit('- should return a valid HSL string', () => {});
+	});
+	describe(':: red()', () => {
+		xit('- should return a string', () => {});
+		xit('- should return a value greater than or equal to 0', () => {});
+		xit('- should return a value less than or equal to 255', () => {});
+	});
+	describe(':: green()', () => {
+		xit('- should return a string', () => {});
+		xit('- should return a value greater than or equal to 0', () => {});
+		xit('- should return a value less than or equal to 255', () => {});
+	});
+	describe(':: blue()', () => {
+		xit('- should return a string', () => {});
+		xit('- should return a value greater than or equal to 0', () => {});
+		xit('- should return a value less than or equal to 255', () => {});
+	});
+	describe(':: redHex()', () => {
+		xit('- should return a string', () => {});
+		xit('- should return a value with hex characters');
+		xit('- should return 2 characters');
+		xit('- should return a value greater or equal to 00');
+		xit('- should return a value less than or equal to FF');
+	});
+	describe(':: greenHex()', () => {
+		xit('- should return a string', () => {});
+		xit('- should return a value with hex characters');
+		xit('- should return 2 characters');
+		xit('- should return a value greater or equal to 00');
+		xit('- should return a value less than or equal to FF');
+	});
+	describe(':: blueHex()', () => {
+		xit('- should return a string', () => {});
+		xit('- should return a value with hex characters');
+		xit('- should return 2 characters');
+		xit('- should return a value greater or equal to 00');
+		xit('- should return a value less than or equal to FF');
+	});
+	describe(':: hue()', () => {
+		xit('- should return a string', () => {});
+		xit('- should return a value greater than or equal to 0', () => {});
+		xit('- should return a value less than or equal to 360', () => {});
+	});
+	describe(':: saturation()', () => {
+		xit('- should return a string', () => {});
+		xit('- should return a value greater than or equal to 0', () => {});
+		xit('- should return a value less than or equal to 100', () => {});
+	});
+	describe(':: lightness()', () => {
+		xit('- should return a string', () => {});
+		xit('- should return a value greater than or equal to 0', () => {});
+		xit('- should return a value less than or equal to 100', () => {});
+	});
+});
+
+
+describe('Color Validation', () => {
 	let color: Color;
 
 	beforeEach(() => {
@@ -63,7 +135,6 @@ describe('Color', () => {
 	});
 
 
-
 	describe(':: isColorName', () => {
 		it('- returns a boolean', () => {
 			expect(typeof Color.isColorName('')).toEqual('boolean');
@@ -92,8 +163,6 @@ describe('Color', () => {
 		});
 
 	});
-
-
 
 
 	describe(':: isRGB', () => {
@@ -213,11 +282,6 @@ describe('Color', () => {
 
 
 
-
-
-
-
-
 	// Color isValid is a test for strings which a Color can be initialized
 	describe(':: isValid', () => {
 
@@ -258,7 +322,5 @@ describe('Color', () => {
 
 
 	});
-
-
 
 });
