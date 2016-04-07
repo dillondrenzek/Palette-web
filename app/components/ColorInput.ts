@@ -1,6 +1,6 @@
 import { Component, Input } from 'angular2/core';
 
-import { ActiveColorService } from '../services/active-color-service';
+import { ActiveColorService } from '../services/ActiveColorService';
 import { Color } from '../models/Color';
 
 
