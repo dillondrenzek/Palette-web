@@ -43,8 +43,8 @@ export class Color {
         console.log(values);
 
         return (
-            s.startsWith('rgb(')
-            && s.endsWith(')')
+            s.indexOf('rgb(') === 0
+            && s.indexOf(')')
             && values.length === 3
         );
     }

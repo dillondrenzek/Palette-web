@@ -1,12 +1,13 @@
 import { Component } from 'angular2/core';
-import { Swatch } from './components/swatch';
+import { Swatch } from './components/Swatch';
 import { ActiveColorService } from './services/ActiveColorService';
+import { ColorInput } from './components/ColorInput';
 
 @Component({
 	selector: 'app',
 	templateUrl: 'app/palette.html',
 	styleUrls: ['built/css/palette.css'],
-	directives: [Swatch],
+	directives: [Swatch, ColorInput],
 	providers: [ActiveColorService]
 })
 

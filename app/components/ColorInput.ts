@@ -1,26 +1,29 @@
-import { Component, Input } from 'angular2/core';
+import { Component, Input, Output } from 'angular2/core';
 
 import { ActiveColorService } from '../services/ActiveColorService';
 import { Color } from '../models/Color';
 
 
 @Component({
-	selector: 'swatch',
+	selector: 'color-input',
 	template: `
-		<input type="text" (keyup.enter)=""/>
+		<input #box type="text" (keyup.enter)="box.value" [(value)]="color" />
 	`,
 	styles:[],
 	providers: [ActiveColorService]
 })
 
 export class ColorInput {
-	color: string;
+	@Input() color: string;
 
-	constructor ( private _activeColorService: ActiveColorService ) { }
+	constructor ( private _activeColorService: ActiveColorService ) {
+		
+	}
 
 	ngOnInit() {
 		this.color = this._activeColorService.activeColor;
 	}
+
 	submit(color: string) {
 		if (Color.isValid(color)){
 			this._activeColorService.setActiveColor(color);
