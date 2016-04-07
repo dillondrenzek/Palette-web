@@ -1,4 +1,4 @@
-import { ActiveColorService } from './active-color-service';
+import { ActiveColorService } from './ActiveColorService';
 import { Color } from '../models/Color';
 declare var describe: any;
 declare var beforeEach: any;
@@ -14,7 +14,7 @@ describe('ActiveColorService', () => {
 
 	describe(':: getActiveColor', () => {
 		it('- should return a Color object', () => {
-			expect(typeof service.getActiveColor()).toEqual('object');
+			expect(typeof service.getActiveColor()).toEqual('string');
 		});
 
 		it('- should return a valid color', () => {

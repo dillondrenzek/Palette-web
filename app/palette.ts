@@ -1,6 +1,6 @@
 import { Component } from 'angular2/core';
 import { Swatch } from './components/swatch';
-import { ActiveColorService } from './services/active-color-service';
+import { ActiveColorService } from './services/ActiveColorService';
 
 @Component({
 	selector: 'app',

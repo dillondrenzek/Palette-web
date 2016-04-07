@@ -8,73 +8,194 @@ declare var it: any;
 declare var expect: any;
 
 describe('Color Model', () => {
+	let validColor: Color;
+	let invalidColor: Color;
+
+	beforeEach(() => {
+		validColor = new Color('rgb(0,0,0)');
+		invalidColor = new Color('(0,0,0)');
+	});
+
+	describe(':: isValid()', () => {
+		it('- should return a boolean value', () => {
+			expect(typeof validColor.isValid()).toEqual('boolean');
+		});
+
+		it('- should return true for a valid Color', () => {
+			expect(validColor.isValid()).toBe(true);
+		});
+
+		it('- should return false for an invalid Color', () => {
+			expect(invalidColor.isValid()).toBe(false);
+		});
+	});
+
+
+
 	describe(':: rgbValue()', () => {
-		xit('- should return a string', () => {});
-		xit('- should return a valid Color', () => {});
-		xit('- should return a valid RGB string', () => {});
+		it('- should return a string', () => {
+			expect(typeof validColor.rgbValue()).toEqual('string');
+		});
+		it('- should return a valid RGB string', () => {
+			var ret:any = validColor.rgbValue();
+			expect(Color.isRGB(ret)).toBe(true);
+		});
 	});
+
+
+
 	describe(':: hexValue()', () => {
-		xit('- should return a string', () => {});
-		xit('- should return a valid Color', () => {});
-		xit('- should return a valid hex string', () => {});
+		it('- should return a string', () => {
+			expect(typeof validColor.hexValue()).toEqual('string');
+		});
+
+		it('- should return a valid hex string', () => {
+			var ret:any = validColor.hexValue();
+			expect(Color.isHex(ret)).toBe(true);
+		});
 	});
+
+
+
 	describe(':: hslValue()', () => {
-		xit('- should return a string', () => {});
-		xit('- should return a valid Color', () => {});
-		xit('- should return a valid HSL string', () => {});
+		it('- should return a string', () => {
+			expect(typeof validColor.hslValue()).toEqual('string');
+		});
+		it('- should return a valid HSL string', () => {
+			var ret:any = validColor.hslValue();
+			expect(Color.isHSL(ret)).toBe(true);
+		});
 	});
+
+
+
 	describe(':: red()', () => {
-		xit('- should return a string', () => {});
-		xit('- should return a value greater than or equal to 0', () => {});
-		xit('- should return a value less than or equal to 255', () => {});
+		it('- should return a number', () => {
+			expect(typeof validColor.red()).toEqual('number');
+		});
+
+		it('- should return a valid RGB value', () => {
+			var ret:any = validColor.red();
+			var newRGBString: string = 'rgb('+ret+',0,0)';
+			expect(Color.isRGB(newRGBString)).toBe(true);
+		});
+
+		it('- should return the correct value', () => {
+			validColor = new Color('rgb(35,70,105)');
+			var ret:any = validColor.red();
+			expect(ret).toEqual(35);
+		});
 	});
+
+
+
 	describe(':: green()', () => {
-		xit('- should return a string', () => {});
-		xit('- should return a value greater than or equal to 0', () => {});
-		xit('- should return a value less than or equal to 255', () => {});
+		it('- should return a number', () => {
+			expect(typeof validColor.green()).toEqual('number');
+		});
+
+		it('- should return a valid RGB value', () => {
+			var ret:any = validColor.green();
+			var newRGBString: string = 'rgb(0,'+ret+',0)';
+			expect(Color.isRGB(newRGBString)).toBe(true);
+		});
+
+		it('- should return the correct value', () => {
+			validColor = new Color('rgb(35,70,105)');
+			var ret:any = validColor.green();
+			expect(ret).toEqual(70);
+		});
 	});
+
+
+
 	describe(':: blue()', () => {
-		xit('- should return a string', () => {});
-		xit('- should return a value greater than or equal to 0', () => {});
-		xit('- should return a value less than or equal to 255', () => {});
+		it('- should return a number', () => {
+			expect(typeof validColor.blue()).toEqual('number');
+		});
+
+		it('- should return a valid RGB value', () => {
+			var ret:any = validColor.blue();
+			var newRGBString: string = 'rgb(0,0,'+ret+')';
+			expect(Color.isRGB(newRGBString)).toBe(true);
+		});
+
+		it('- should return the correct value', () => {
+			validColor = new Color('rgb(35,70,105)');
+			var ret:any = validColor.blue();
+			expect(ret).toEqual(105);
+		});
 	});
+
+
+
 	describe(':: redHex()', () => {
-		xit('- should return a string', () => {});
+		xit('- should return a string', () => {
+			expect(typeof validColor.redHex()).toEqual('string');
+		});
 		xit('- should return a value with hex characters');
 		xit('- should return 2 characters');
 		xit('- should return a value greater or equal to 00');
 		xit('- should return a value less than or equal to FF');
 	});
+
+
+
 	describe(':: greenHex()', () => {
-		xit('- should return a string', () => {});
+		xit('- should return a string', () => {
+			expect(typeof validColor.greenHex()).toEqual('string');
+		});
 		xit('- should return a value with hex characters');
 		xit('- should return 2 characters');
 		xit('- should return a value greater or equal to 00');
 		xit('- should return a value less than or equal to FF');
 	});
+
+
+
 	describe(':: blueHex()', () => {
-		xit('- should return a string', () => {});
+		xit('- should return a string', () => {
+			expect(typeof validColor.blueHex()).toEqual('string');
+		});
 		xit('- should return a value with hex characters');
 		xit('- should return 2 characters');
 		xit('- should return a value greater or equal to 00');
 		xit('- should return a value less than or equal to FF');
 	});
+
+
+
 	describe(':: hue()', () => {
-		xit('- should return a string', () => {});
+		xit('- should return a string', () => {
+			expect(typeof validColor.hue()).toEqual('string');
+		});
 		xit('- should return a value greater than or equal to 0', () => {});
 		xit('- should return a value less than or equal to 360', () => {});
 	});
+
+
+
 	describe(':: saturation()', () => {
-		xit('- should return a string', () => {});
+		xit('- should return a string', () => {
+			expect(typeof validColor.saturation()).toEqual('string');
+		});
 		xit('- should return a value greater than or equal to 0', () => {});
 		xit('- should return a value less than or equal to 100', () => {});
 	});
+
+
+
 	describe(':: lightness()', () => {
-		xit('- should return a string', () => {});
+		xit('- should return a string', () => {
+			expect(typeof validColor.lightness()).toEqual('string');
+		});
 		xit('- should return a value greater than or equal to 0', () => {});
 		xit('- should return a value less than or equal to 100', () => {});
 	});
 });
+
+
+
 
 
 describe('Color Validation', () => {

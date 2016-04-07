@@ -6,6 +6,8 @@ export class ActiveColorService {
 	activeColor: string = "#b8bb26";
 
 	constructor() {}
-	getActiveColor(){}
-	setActiveColor(){}
+	getActiveColor():string{
+		return this.activeColor;
+	}
+	setActiveColor(string){}
 }

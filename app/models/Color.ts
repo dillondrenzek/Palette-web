@@ -1,6 +1,27 @@
 export class Color {
 
-    constructor(public color: string) { }
+    private _input: string;
+
+    constructor(color: string) {
+      this._input = color;
+    }
+
+    rgbValue(){}
+    hexValue(){}
+    hslValue(){}
+    red(){}
+    green(){}
+    blue(){}
+    redHex(){}
+    greenHex(){}
+    blueHex(){}
+    hue(){}
+    saturation(){}
+    lightness(){}
+
+    isValid(): boolean{
+      return false;
+    }
 
     static isRGB(s: string): boolean {
         var values: string[] = s.replace('rgb', '')

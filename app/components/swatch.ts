@@ -1,12 +1,12 @@
 import { Component, Input } from 'angular2/core';
 
-import { ActiveColorService } from '../services/active-color-service';
+import { ActiveColorService } from '../services/ActiveColorService';
 
 
 @Component({
 	selector: 'swatch',
 	template: `
-		<div [(style.backgroundColor)]="color"
+		<div [style.backgroundColor]="color"
 			[style.height.px]="height"
 			[style.width.px]="width"></div>
 	`,
