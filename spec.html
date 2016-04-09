@@ -30,13 +30,11 @@
 
       // #3. Import the spec file explicitly
         Promise.all([
-          System.import('built/js/components/ColorInput.spec'),
-          System.import('built/js/services/ActiveColorService.spec'),
-          System.import('built/js/models/Color.spec'),
+          System.import('built/js/models/Color.spec')
 
           ])
           .then(window.onload)
-          .catch(console.error.bind(console, error));
+          .catch(console.error.bind(console));
 
     </script>
   </head>

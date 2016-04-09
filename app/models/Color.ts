@@ -1,119 +1,82 @@
 export class Color {
 
-    private _input: string;
+	red: number;
+	green: number;
+	blue: number;
 
-    constructor(color: string) {
-      this._input = color;
-    }
+	hue: number;
+	saturation: number;
+	lightness: number;
 
-    rgbValue(){}
-    hexValue(){}
-    hslValue(){}
-    red(){}
-    green(){}
-    blue(){}
-    redHex(){}
-    greenHex(){}
-    blueHex(){}
-    hue(){}
-    saturation(){}
-    lightness(){}
+	constructor(private _colorString: string){
+		console.info(_colorString);
+		this.parseColor(_colorString);
+	}
 
-    isValid(): boolean{
-      return false;
-    }
+	parseColor(color: string){
 
-    static isRGB(s: string): boolean {
-        var values: string[] = s.replace('rgb', '')
-            .replace('(', '')
-            .replace(')', '')
-            .split(',');
+		var rgbFormatMatch: RegExp = /rgb\(([0-9]{1,3}\,(\ )?){2}([0-9]{1,3}(\ )?){1}\)/;
+		var hslFormatMatch: RegExp = /hsl\(([0-9]{1,3}\,(\ )?){2}([0-9]{1,3}(\ )?){1}\)/;
 
-        console.log('---');
+		if (color.match(rgbFormatMatch)) {
+			this.parseRGB(color);
+		} else if (color.match(hslFormatMatch)) {
+			this.parseHSL(color);
+		}
+	}
 
-        for (var i = 0; i < values.length; i++) {
-            var v: number = parseInt(values[i]);
-            console.log(v);
-            if (isNaN(v)) { return false; }
-            if (v > 255) { return false; }
-            if (v < 0) { return false; }
-        }
+	parseRGB(color:string) {
+		color = color.replace('rgb', '').replace('(','').replace(')','');
+		var valueStrings: string[] = color.split(',');
+		var values: number[] = [];
 
-        console.log('passed');
-        console.log(values);
+		valueStrings.forEach((str, i) => {
+			console.log(parseInt(str));
+			values.push(parseInt(str));
+		});
 
-        return (
-            s.indexOf('rgb(') === 0
-            && s.indexOf(')')
-            && values.length === 3
-        );
-    }
+		this.setRed(values[0]);
+		this.setGreen(values[1]);
+		this.setBlue(values[2]);
+	}
 
-    static isHex(s: string): boolean {
+	setRed(r: number) {
+		this.red = r;
+	}
 
-        var hexCharacters: RegExp = /^#?(?:[0-9a-f]{3}){1,2}$/i;
+	setGreen(g: number) {
+		this.green = g;
+	}
 
-        return (
-            hexCharacters.test(s)
-        );
-    }
+	setBlue(b: number) {
+		this.blue = b;
+	}
 
-    static isColorName(s: string): boolean {
-        var colorNames: RegExp = /^(red|orange|yellow|green|blue|purple|white|black)$/;
-        return colorNames.test(s);
-    }
+	parseHSL(color:string) {
+		color = color.replace('hsl', '').replace('(','').replace(')','');
+		var valueStrings: string[] = color.split(',');
+		var values: number[] = [];
 
-    static isHSL(s: string): boolean {
-        // verify format
-        if (!s.match(/^hsl\(([0-9]{1,3}%?(\ )?\,(\ )?){2}([0-9]{1,3}%?(\ )?){1}\)$/)) {
-            return false;
-        }
+		valueStrings.forEach((str, i) => {
+			console.log(parseInt(str));
+			values.push(parseInt(str));
+		});
 
+		this.setHue(values[0]);
+		this.setSaturation(values[1]);
+		this.setLightness(values[2]);
+	}
 
-        // verify values
-        var values: string[] = s.replace('hsl', '')
-            .replace('(', '')
-            .replace(')', '')
-            .split(',');
+	setHue(h: number) {
+		this.hue = h;
+	}
 
-        // 3 values
-        if (values.length !== 3) { return false; }
+	setSaturation(s: number) {
+		this.saturation = s;
+	}
 
-				console.log('before', s);
+	setLightness(l: number) {
+		this.lightness = l;
+	}
 
-        // values are up to 3 digits with an optional '%'
-        for (var i = 0; i < values.length; i++) {
-            var str = values[i].replace(' ', '');
-            if (!str.match(/^[0-9]{1,3}%?$/)) { return false; }
-						console.log('before ', s);
-            var percentage: RegExp = /^[0-9]{1,3}%$/;
-            var isPercent: boolean = percentage.test(str);
-            var parsed: number = parseInt(str);
-
-            // negative numbers
-            if (parsed < 0) { return false; }
-
-            if (isPercent) {
-                if (parsed > 100) { return false; }
-            } else {
-                if (i === 0 && (parsed > 360)) { return false; }
-								if (i > 0 && (parsed > 100)) { return false; }
-            }
-        }
-
-				console.log('after', s);
-
-        return true;
-    }
-
-    static isValid(s: string): boolean {
-
-        var valid: boolean = (
-            Color.isHex(s)
-            || Color.isColorName(s)
-            || Color.isRGB(s)
-						|| Color.isHSL(s));
-
-        return valid;
-    }
 }
