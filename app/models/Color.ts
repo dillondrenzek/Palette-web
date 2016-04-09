@@ -25,13 +25,14 @@ export class Color {
 		}
 	}
 
+	// Red, Green, Blue
+
 	parseRGB(color:string) {
 		color = color.replace('rgb', '').replace('(','').replace(')','');
 		var valueStrings: string[] = color.split(',');
 		var values: number[] = [];
 
 		valueStrings.forEach((str, i) => {
-			console.log(parseInt(str));
 			values.push(parseInt(str));
 		});
 
@@ -52,13 +53,18 @@ export class Color {
 		this.blue = b;
 	}
 
+	rgb(): string {
+		return this._colorString;
+	}
+
+	// Hue, Saturation, Lightness
+
 	parseHSL(color:string) {
 		color = color.replace('hsl', '').replace('(','').replace(')','');
 		var valueStrings: string[] = color.split(',');
 		var values: number[] = [];
 
 		valueStrings.forEach((str, i) => {
-			console.log(parseInt(str));
 			values.push(parseInt(str));
 		});
 
