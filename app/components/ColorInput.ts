@@ -7,7 +7,7 @@ import { Color } from '../models/Color';
 @Component({
 	selector: 'color-input',
 	template: `
-		<input #box type="text" (keyup.enter)="box.value" [(value)]="color" />
+		<input #box type="text" (keyup.enter)="box.value" [value]="color" />
 	`,
 	styles:[],
 	providers: [ActiveColorService]
@@ -17,11 +17,11 @@ export class ColorInput {
 	@Input() color: string;
 
 	constructor ( private _activeColorService: ActiveColorService ) {
-		
+		this.color = this._activeColorService.getActiveColor();
 	}
 
 	ngOnInit() {
-		this.color = this._activeColorService.activeColor;
+
 	}
 
 	submit(color: string) {

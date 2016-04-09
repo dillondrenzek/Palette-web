@@ -23,4 +23,22 @@ describe('ActiveColorService', () => {
 		});
 	});
 
+	describe(':: setActiveColor', () => {
+		it('- should set the activeColor', () => {
+			var submitColor = '#b23b23';
+
+			service.setActiveColor(submitColor);
+
+			expect(service.activeColor).toEqual(submitColor);
+		});
+
+		it('- should not set an invalid activeColor', () => {
+			var preSubmitActiveColor = service.activeColor;
+			var invalidColor = ' ';
+
+			expect(service.setActiveColor(invalidColor)).toThrow();
+			expect(service.activeColor).toEqual(preSubmitActiveColor);
+		});
+	});
+
 });

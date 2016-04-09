@@ -1,4 +1,5 @@
 import { Injectable } from 'angular2/core';
+import { Color } from '../models/Color';
 
 @Injectable()
 export class ActiveColorService {
@@ -9,5 +10,11 @@ export class ActiveColorService {
 	getActiveColor():string{
 		return this.activeColor;
 	}
-	setActiveColor(string){}
+	setActiveColor(color: string){
+		if (Color.isValid(color)) {
+			this.activeColor = color;
+		} else {
+			throw new Error('Tried to set an invalid activeColor');
+		}
+	}
 }
