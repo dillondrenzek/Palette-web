@@ -1,11 +1,12 @@
 import { Component } from 'angular2/core';
 import { ColorOutput } from './components/ColorOutput';
+import { ColorInput } from './components/ColorInput';
 
 @Component({
 	selector: 'app',
 	templateUrl: 'app/palette.html',
 	styleUrls: ['built/css/palette.css'],
-	directives: [ColorOutput],
+	directives: [ColorOutput, ColorInput],
 	providers: []
 })
 
