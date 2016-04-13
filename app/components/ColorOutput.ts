@@ -1,5 +1,6 @@
 import { Component, Input } from 'angular2/core';
 import { Color } from '../models/Color';
+import { ActiveColorService } from '../services/ActiveColorService';
 
 @Component({
 	selector: 'color-output',
@@ -17,12 +18,11 @@ export class ColorOutput {
 
 	color: Color;
 
-	constructor() {
-
+	constructor(private _activeColorService: ActiveColorService) {
+		this.color = this._activeColorService.getActiveColor();
 	}
 
 	ngOnInit() {
-		this.color = new Color('rgb(12,34,56)');
 	}
 
 }
