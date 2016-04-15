@@ -4,7 +4,7 @@ import { ActiveColorService } from '../services/ActiveColorService';
 
 @Component({
 	selector: 'color-output',
-	template: `<div [style.backgroundColor]="color.rgb()"></div>`,
+	template: `<div [style.backgroundColor]="color.rgbString"></div>`,
 	styles: [`
 		div {
 			display: block;
@@ -19,7 +19,9 @@ export class ColorOutput {
 	color: Color;
 
 	constructor(private _activeColorService: ActiveColorService) {
-		this.color = this._activeColorService.getActiveColor();
+		_activeColorService.activeColor$.subscribe((color) => {
+			this.color = color;
+		});
 	}
 
 	ngOnInit() {

@@ -1,7 +1,6 @@
 export class Color {
 
 	constructor(private _colorString: string){
-		console.info(_colorString);
 		this.parseColor(_colorString);
 	}
 
@@ -64,7 +63,9 @@ export class Color {
 		this.updateHSL();
 	}
 
-
+	get rgbString(): string {
+		return 'rgb('+this.red+','+this.green+','+this.blue+')';
+	}
 
 
 	// Hue, Saturation, Lightness
@@ -106,6 +107,12 @@ export class Color {
 		this._lightness = l;
 		this.updateRGB();
 	}
+
+	hslString(): string {
+		return 'hsl('+this.hue+','+this.saturation+','+this.lightness+')';
+	}
+
+
 
 
 

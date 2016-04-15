@@ -4,10 +4,8 @@ import { ActiveColorService } from '../services/ActiveColorService';
 
 @Component({
 	selector: 'color-input',
-	template: `<input [value]="color.rgb()"/>`,
-	styles: [`
-
-		`]
+	template: `<input [value]="color.rgbString"/>`,
+	styles: [``]
 })
 
 export class ColorInput {
@@ -15,7 +13,9 @@ export class ColorInput {
 	color: Color;
 
 	constructor(private _activeColorService: ActiveColorService) {
-		this.color = _activeColorService.getActiveColor();
+		_activeColorService.activeColor$.subscribe((color) => {
+			this.color = color;
+		});
 	}
 
 	ngOnInit() {
