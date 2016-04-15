@@ -25,4 +25,9 @@ export class ActiveColorService {
 		this._activeColorSource.next(c);
 	}
 
+	setActiveColorString(s: string) {
+		var c = new Color(s);
+		this.setActiveColor(c);
+	}
+
 }

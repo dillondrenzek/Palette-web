@@ -4,7 +4,7 @@ import { ActiveColorService } from '../services/ActiveColorService';
 
 @Component({
 	selector: 'color-input',
-	template: `<input [value]="color.rgbString"/>`,
+	template: `<input #self [value]="color.rgbString" (keyup.enter)="setColor(self.value)"/>`,
 	styles: [``]
 })
 
@@ -18,6 +18,7 @@ export class ColorInput {
 		});
 	}
 
-	ngOnInit() {
+	setColor (s: string){
+		this._activeColorService.setActiveColorString(s);
 	}
 }
