@@ -1,20 +1,13 @@
 export class Color {
 
-	red: number;
-	green: number;
-	blue: number;
-
-	hue: number;
-	saturation: number;
-	lightness: number;
-
 	constructor(private _colorString: string){
 		console.info(_colorString);
 		this.parseColor(_colorString);
 	}
 
-	parseColor(color: string){
 
+
+	parseColor(color: string){
 		var rgbFormatMatch: RegExp = /rgb\(([0-9]{1,3}\,(\ )?){2}([0-9]{1,3}(\ )?){1}\)/;
 		var hslFormatMatch: RegExp = /hsl\(([0-9]{1,3}\,(\ )?){2}([0-9]{1,3}(\ )?){1}\)/;
 
@@ -24,6 +17,10 @@ export class Color {
 			this.parseHSL(color);
 		}
 	}
+
+
+
+
 
 	// Red, Green, Blue
 
@@ -36,26 +33,39 @@ export class Color {
 			values.push(parseInt(str));
 		});
 
-		this.setRed(values[0]);
-		this.setGreen(values[1]);
-		this.setBlue(values[2]);
+		this.red = values[0];
+		this.green = values[1];
+		this.blue = values[2];
 	}
 
-	setRed(r: number) {
-		this.red = r;
+
+	// Red, Green, Blue
+
+	private _red: number = 0;
+	private _green: number = 0;
+	private _blue: number = 0;
+	private _rgb: number[] = [this._red, this._green, this._blue];
+
+	get red() { return this._red; }
+	set red(r: number) {
+		this._red = r;
+		this.updateHSL();
 	}
 
-	setGreen(g: number) {
-		this.green = g;
+	get green() { return this._green; }
+	set green(g: number) {
+		this._green = g;
+		this.updateHSL();
 	}
 
-	setBlue(b: number) {
-		this.blue = b;
+	get blue() { return this._blue; }
+	set blue(b: number) {
+		this._blue = b;
+		this.updateHSL();
 	}
 
-	rgb(): string {
-		return this._colorString;
-	}
+
+
 
 	// Hue, Saturation, Lightness
 
@@ -68,23 +78,103 @@ export class Color {
 			values.push(parseInt(str));
 		});
 
-		this.setHue(values[0]);
-		this.setSaturation(values[1]);
-		this.setLightness(values[2]);
+		this.hue = values[0];
+		this.saturation = values[1];
+		this.lightness = values[2];
 	}
 
-	setHue(h: number) {
-		this.hue = h;
+	// Hue, Saturation, Lightness
+
+	private _hue: number = 0;
+	private _saturation: number = 0;
+	private _lightness: number = 0;
+
+	get hue() { return this._hue; }
+	set hue(h: number) {
+		this._hue = h;
+		this.updateRGB();
 	}
 
-	setSaturation(s: number) {
-		this.saturation = s;
+	get saturation() { return this._saturation; }
+	set saturation(s: number) {
+		this._saturation = s;
+		this.updateRGB();
 	}
 
-	setLightness(l: number) {
-		this.lightness = l;
+	get lightness() { return this._lightness; }
+	set lightness(l: number) {
+		this._lightness = l;
+		this.updateRGB();
 	}
 
+
+
+	// Conversion Methods
+
+	updateRGB() {
+		var h = this.hue;
+		var s = this.saturation / 100;
+		var l = this.lightness / 100;
+
+		var c = (1 - Math.abs(2*l - 1)) * s;
+		var x = c * (1 - Math.abs((h/60) % 2 - 1));
+		var m = l - c/2;
+
+		var arr: number[] = [];
+		if (h < 60) {
+			arr = [c,x,0];
+		} else if ( h < 120 ) {
+			arr = [x,c,0];
+		} else if ( h < 180 ) {
+			arr = [0,c,x];
+		} else if ( h < 240 ) {
+			arr = [0,c,x];
+		} else if ( h < 300 ) {
+			arr = [x,0,c];
+		} else if ( h < 360 ) {
+			arr = [c,0,x];
+		}
+
+		this._red = Math.round((arr[0]+m) * 255);
+		this._green = Math.round((arr[1]+m) * 255);
+		this._blue = Math.round((arr[2]+m) * 255);
+	}
+
+	updateHSL() {
+		var r = this.red/255;
+		var g = this.green/255;
+		var b = this.blue/255;
+
+		var cmax = Math.max(r,g,b);
+		var cmin = Math.min(r,g,b);
+		var d = cmax - cmin;
+
+		// calculate hue
+		var h: number;
+		if (d === 0) {
+			this.hue = 0;
+		} else if (cmax === r) {
+			var x = (g-b)/d;
+			h = x % 6;
+		} else if (cmax === g) {
+			var x = (b-r)/d;
+			h = x + 2;
+		} else if (cmax === b) {
+			var x = (r-g)/d;
+			h = x + 4;
+		}
+
+		this._hue = Math.round(60 * h);
+
+		// calculate saturation
+		var l = ((cmax + cmin) / 2);
+		var s = (d === 0) ? 0 : (d/(1-Math.abs(2*l-1)));
+
+		this._saturation = Math.round(s * 100);
+
+		// calculate lightness
+		this._lightness = Math.round(l * 100);
+	}
 
 
 }

@@ -80,7 +80,7 @@ describe('Color', () => {
 		});
 
 		it('- outputs the correct red value', () => {
-			expect(hslColor.red).toEqual(178);
+			expect(hslColor.red).toEqual(179); // rounding?
 		});
 		it('- outputs the correct green value', () => {
 			expect(hslColor.green).toEqual(59);
