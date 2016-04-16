@@ -4,6 +4,51 @@ import { Color } from '../models/Color';
 
 describe( 'ActiveColorService', () => {
 
+	describe(':: constructor()', () => {
+		let color: Color;
+		let service: ActiveColorService;
+
+		beforeEach(() => {
+			color = new Color('rgb(234,123,12)');
+		});
+
+		it('- should have a default color', () => {
+			service = new ActiveColorService();
+			expect(service.activeColor.red).toEqual(0);
+			expect(service.activeColor.green).toEqual(0);
+			expect(service.activeColor.blue).toEqual(0);
+		});
+
+		it('- should accept a string constructor', () => {
+			service = new ActiveColorService(color.rgbString);
+			expect(service.activeColor.red).toBe(234);
+			expect(service.activeColor.green).toBe(123);
+			expect(service.activeColor.blue).toBe(12);
+		});
+
+		it('- should accept a Color constructor', () => {
+			service = new ActiveColorService(color);
+			expect(service.activeColor.red).toBe(234);
+			expect(service.activeColor.green).toBe(123);
+			expect(service.activeColor.blue).toBe(12);
+		});
+
+	});
+
+	describe(':: activeColor',() => {
+		let color: Color;
+		let service: ActiveColorService;
+
+		beforeEach(() => {
+			color = new Color('rgb(234,123,12)');
+			service = new ActiveColorService(color);
+		});
+
+		it('- should get the activeColor', () => {
+			expect(service.activeColor).toEqual(color);
+		});
+
+	});
 
 
 	describe(':: setActiveColor()', () => {
@@ -11,7 +56,7 @@ describe( 'ActiveColorService', () => {
 		let service: ActiveColorService;
 
 		beforeEach(() => {
-			color = new Color('rgb(0,0,0)');
+			color = new Color('rgb(234,123,12)');
 			service = new ActiveColorService();
 
 			// set activeColor
@@ -19,16 +64,11 @@ describe( 'ActiveColorService', () => {
 		});
 
 		it('- should set the activeColor', () => {
-			var newColor: Color = new Color('rgb(12,34,56)');
-			service.activeColor$.subscribe((result) => {
-				expect(result).toBe(newColor);
-			});
-
-			service.setActiveColor(newColor);
+			expect(service.activeColor).toBe(color);
 		});
 	});
 
-	xdescribe(':: getActiveColor',() => {});
+
 
 
 	describe(':: activeColor$', () => {
@@ -38,8 +78,6 @@ describe( 'ActiveColorService', () => {
 		beforeEach(() => {
 			color = new Color('rgb(234,123,12)');
 			service = new ActiveColorService();
-
-			service.setActiveColor(color);
 		});
 
 		it('- should return the activeColor', () => {
@@ -47,7 +85,7 @@ describe( 'ActiveColorService', () => {
 				expect(result).toBe(color);
 			});
 
-
+			service.setActiveColor(color);
 		});
 
 	});

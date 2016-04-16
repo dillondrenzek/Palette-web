@@ -11,9 +11,22 @@ export class ActiveColorService {
 
 	private _activeColor: Color;
 
-	constructor() {
-		// this._activeColor = new Color('rgb(145,34,56)');
-		// this._activeColorSource.next(this._activeColor);
+	constructor(color?: any) {
+		console.log(color);
+
+		if (typeof color === 'string') {
+			this._activeColor = new Color(color);
+		}
+		else if (color instanceof Color && typeof color.rgbString === 'string') {
+			this._activeColor = new Color(color.rgbString);
+		}
+		else {
+			this._activeColor = new Color('rgb(0,0,0)');
+		}
+	}
+
+	private _init(color?: any) {
+
 	}
 
 	get activeColor(): Color { return this._activeColor; }
