@@ -10,7 +10,6 @@ describe('Color', () => {
 			rgbColor = new Color('rgb(12,34,56)');
 		});
 
-
 		it('- reports the correct red color', () => {
 			expect(rgbColor.red).toEqual(12);
 		});
@@ -33,7 +32,6 @@ describe('Color', () => {
 			hslColor = new Color('hsl(360,100,100)');
 		});
 
-
 		it('- reports the correct hue value', () => {
 			expect(hslColor.hue).toEqual(360);
 		});
@@ -46,6 +44,49 @@ describe('Color', () => {
 			expect(hslColor.lightness).toEqual(100);
 		});
 	});
+
+	describe(':: Value Validation', () => {
+		describe(':: RGB', () => {
+			let lesscolor: Color;
+			let greatercolor: Color;
+			beforeAll(() => {
+				lesscolor = new Color('rgb(-12,-1,-123)');
+				greatercolor = new Color('rgb(260,260,260)');
+			});
+
+			it('- should make init values lower than 0 equal to 0', () => {
+				expect(lesscolor.red).toEqual(0);
+				expect(lesscolor.green).toEqual(0);
+				expect(lesscolor.blue).toEqual(0);
+			});
+			it('- should make init values greater than 255 equal to 255', () => {
+				expect(greatercolor.red).toEqual(255);
+				expect(greatercolor.green).toEqual(255);
+				expect(greatercolor.blue).toEqual(255);
+			});
+		});
+
+		describe(':: HSL', () => {
+			let lesscolor: Color;
+			let greatercolor: Color;
+			beforeAll(() => {
+				lesscolor = new Color('hsl(-12,-1,-123)');
+				greatercolor = new Color('hsl(362,102,155)');
+			});
+			it('- should make init values lower than 0 equal to 0', () => {
+				expect(lesscolor.hue).toEqual(0);
+				expect(lesscolor.saturation).toEqual(0);
+				expect(lesscolor.lightness).toEqual(0);
+			});
+			it('- should make init values greater than their maximums equal to their maximums', () => {
+				expect(greatercolor.hue).toEqual(360);
+				expect(greatercolor.saturation).toEqual(100);
+				expect(greatercolor.lightness).toEqual(100);
+			});
+		});
+	});
+
+
 
 	describe(':: RGB to HSL conversion', () => {
 
