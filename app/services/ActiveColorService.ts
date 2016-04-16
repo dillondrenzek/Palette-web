@@ -3,7 +3,6 @@ import { Subject } from 'rxjs/Subject';
 import { Color } from '../models/Color';
 
 @Injectable()
-
 export class ActiveColorService {
 
 	private _activeColorSource = new Subject<Color>();
@@ -11,22 +10,8 @@ export class ActiveColorService {
 
 	private _activeColor: Color;
 
-	constructor(color?: any) {
-		console.log(color);
-
-		if (typeof color === 'string') {
-			this._activeColor = new Color(color);
-		}
-		else if (color instanceof Color && typeof color.rgbString === 'string') {
-			this._activeColor = new Color(color.rgbString);
-		}
-		else {
-			this._activeColor = new Color('rgb(0,0,0)');
-		}
-	}
-
-	private _init(color?: any) {
-
+	constructor() {
+		this._activeColor = new Color('rgb(0,0,0)');
 	}
 
 	get activeColor(): Color { return this._activeColor; }

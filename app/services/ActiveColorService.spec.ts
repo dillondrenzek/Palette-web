@@ -8,29 +8,11 @@ describe( 'ActiveColorService', () => {
 		let color: Color;
 		let service: ActiveColorService;
 
-		beforeEach(() => {
-			color = new Color('rgb(234,123,12)');
-		});
-
 		it('- should have a default color', () => {
 			service = new ActiveColorService();
 			expect(service.activeColor.red).toEqual(0);
 			expect(service.activeColor.green).toEqual(0);
 			expect(service.activeColor.blue).toEqual(0);
-		});
-
-		it('- should accept a string constructor', () => {
-			service = new ActiveColorService(color.rgbString);
-			expect(service.activeColor.red).toBe(234);
-			expect(service.activeColor.green).toBe(123);
-			expect(service.activeColor.blue).toBe(12);
-		});
-
-		it('- should accept a Color constructor', () => {
-			service = new ActiveColorService(color);
-			expect(service.activeColor.red).toBe(234);
-			expect(service.activeColor.green).toBe(123);
-			expect(service.activeColor.blue).toBe(12);
 		});
 
 	});
@@ -41,11 +23,11 @@ describe( 'ActiveColorService', () => {
 
 		beforeEach(() => {
 			color = new Color('rgb(234,123,12)');
-			service = new ActiveColorService(color);
+			service = new ActiveColorService();
 		});
 
 		it('- should get the activeColor', () => {
-			expect(service.activeColor).toEqual(color);
+			expect(service.activeColor instanceof Color).toBe(true);
 		});
 
 	});

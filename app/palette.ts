@@ -16,12 +16,12 @@ export class Palette {
 	appTitle: string = "Palette";
 	appVersion: string = "v0.2.5";
 
-	constructor(private _activeColorService: ActiveColorService) {
+	defaultColor: Color = new Color('rgb(145,145,56)');
 
-	}
+	constructor(private _activeColorService: ActiveColorService) {}
 
 	ngOnInit() {
-		var c: Color = new Color('rgb(145,34,56)');
-		this._activeColorService.setActiveColor(c);
+		var c: Color;
+		this._activeColorService.setActiveColor(this.defaultColor);
 	}
 }
