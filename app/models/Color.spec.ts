@@ -60,7 +60,6 @@ describe('Color', () => {
 				expect(lesscolor.blue).toEqual(0);
 			});
 			it('- should make init values greater than 255 equal to 255', () => {
-				console.log('260: ', greatercolor.rgbString);
 				expect(greatercolor.red).toEqual(255);
 				expect(greatercolor.green).toEqual(255);
 				expect(greatercolor.blue).toEqual(255);

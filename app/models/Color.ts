@@ -1,7 +1,4 @@
 function applyBounds(min: number, val: number, max: number): number {
-
-	console.log('applyBounds', min, val, max);
-
 	if (val < min) {
 		return min;
 	} else if (val > max) {
