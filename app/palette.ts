@@ -14,6 +14,7 @@ import { ActiveColorService } from './services/ActiveColorService';
 
 export class Palette {
 	appTitle: string = "Palette";
+	appVersion: string = "v0.2.5";
 
 	constructor(private _activeColorService: ActiveColorService) {
 
