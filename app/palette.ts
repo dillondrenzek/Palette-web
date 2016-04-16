@@ -14,7 +14,7 @@ import { ActiveColorService } from './services/ActiveColorService';
 
 export class Palette {
 	appTitle: string = "Palette";
-	appVersion: string = "v0.2.5";
+	appVersion: string = "v0.2.6";
 
 	defaultColor: Color = new Color('rgb(145,145,56)');
 
