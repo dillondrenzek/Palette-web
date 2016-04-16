@@ -1,3 +1,16 @@
+function applyBounds(min: number, val: number, max: number): number {
+
+	console.log('applyBounds', min, val, max);
+
+	if (val < min) {
+		return min;
+	} else if (val > max) {
+		return max;
+	} else {
+		return val;
+	}
+}
+
 export class Color {
 
 	constructor(private _colorString: string){
@@ -14,6 +27,8 @@ export class Color {
 			this.parseRGB(color);
 		} else if (color.match(hslFormatMatch)) {
 			this.parseHSL(color);
+		} else {
+			this.parseRGB('rgb(0,0,0)');
 		}
 	}
 
@@ -26,7 +41,7 @@ export class Color {
 	parseRGB(color:string) {
 		color = color.replace('rgb', '').replace('(','').replace(')','');
 		var valueStrings: string[] = color.split(',');
-		var values: number[] = [];
+		var values: number[] = new Array();
 
 		valueStrings.forEach((str, i) => {
 			values.push(parseInt(str));
@@ -47,19 +62,19 @@ export class Color {
 
 	get red() { return this._red; }
 	set red(r: number) {
-		this._red = r;
+		this._red = applyBounds(0, r, 255);
 		this.updateHSL();
 	}
 
 	get green() { return this._green; }
 	set green(g: number) {
-		this._green = g;
+		this._green = applyBounds(0, g, 255);
 		this.updateHSL();
 	}
 
 	get blue() { return this._blue; }
 	set blue(b: number) {
-		this._blue = b;
+		this._blue = applyBounds(0, b, 255);
 		this.updateHSL();
 	}
 
@@ -92,19 +107,19 @@ export class Color {
 
 	get hue() { return this._hue; }
 	set hue(h: number) {
-		this._hue = h;
+		this._hue = applyBounds(0, h, 360);
 		this.updateRGB();
 	}
 
 	get saturation() { return this._saturation; }
 	set saturation(s: number) {
-		this._saturation = s;
+		this._saturation = applyBounds(0, s, 100);
 		this.updateRGB();
 	}
 
 	get lightness() { return this._lightness; }
 	set lightness(l: number) {
-		this._lightness = l;
+		this._lightness = applyBounds(0, l, 100);
 		this.updateRGB();
 	}
 
@@ -159,7 +174,7 @@ export class Color {
 		// calculate hue
 		var h: number;
 		if (d === 0) {
-			this.hue = 0;
+			h = 0;
 		} else if (cmax === r) {
 			var x = (g-b)/d;
 			h = x % 6;
