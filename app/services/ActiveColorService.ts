@@ -16,10 +16,8 @@ export class ActiveColorService {
 		// this._activeColorSource.next(this._activeColor);
 	}
 
-	getActiveColor(): Color {
-		return this._activeColor;
-	}
-
+	get activeColor(): Color { return this._activeColor; }
+	getActiveColor(): Color { return this._activeColor; }
 	setActiveColor(c: Color) {
 		this._activeColor = c;
 		this._activeColorSource.next(c);
