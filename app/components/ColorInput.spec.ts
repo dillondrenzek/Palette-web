@@ -4,6 +4,43 @@ import { ActiveColorService } from '../services/ActiveColorService';
 
 describe( 'ColorInput', () => {
 
+	describe(':: output', () => {
+		let color: Color;
+		let color2: Color;
+		let input: ColorInput
+		let service: ActiveColorService;
+
+		beforeEach(() => {
+			color = new Color('rgb(234,123,12)');
+			color2 = new Color('rgb(123, 234, 12)');
+			service = new ActiveColorService();
+			input = new ColorInput(service);
+
+			// set activeColor
+			service.setActiveColor(color);
+		});
+
+		it('- if a mode is set, should output correct value', () => {
+			input.mode = 'r';
+			expect(input.output).toEqual(color.red);
+
+			input.mode = 'g';
+			expect(input.output).toEqual(color.green);
+
+			input.mode = 'b';
+			expect(input.output).toEqual(color.blue);
+
+			input.mode = 'h';
+			expect(input.output).toEqual(color.hue);
+
+			input.mode = 's';
+			expect(input.output).toEqual(color.saturation);
+
+			input.mode = 'l';
+			expect(input.output).toEqual(color.lightness);
+		});
+	});
+
 	describe('=> ActiveColorService', () => {
 		let color: Color;
 		let color2: Color;
@@ -37,6 +74,37 @@ describe( 'ColorInput', () => {
 			expect(service.activeColor.red).toEqual(color2.red);
 			expect(service.activeColor.green).toEqual(color2.green);
 			expect(service.activeColor.blue).toEqual(color2.blue);
+		});
+
+		});
+	describe(':: mode', () => {
+		let color: Color;
+		let color2: Color;
+		let input: ColorInput
+		let service: ActiveColorService;
+
+		beforeEach(() => {
+			color = new Color('rgb(234,123,12)');
+			color2 = new Color('rgb(123, 234, 12)');
+			service = new ActiveColorService();
+			input = new ColorInput(service);
+
+			// set activeColor
+			service.setActiveColor(color);
+
+			// set input mode
+			input.mode = 'r'; // red mode
+
+
+		});
+
+		it('- if a mode is set, it should correctly affect the activeColor on submit', () => {
+			expect(input.output).toEqual(color.red);
+
+			var newValue = 11;
+			input.submit(newValue.toString());
+
+			expect(input.output).toEqual(newValue);
 		});
 	});
 });

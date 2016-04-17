@@ -58,18 +58,24 @@ export class Color {
 	private _rgb: number[] = [this._red, this._green, this._blue];
 
 	get red() { return this._red; }
+	get r() { return this._red; }
+	set r(r: number) { this.red = r; }
 	set red(r: number) {
 		this._red = applyBounds(0, r, 255);
 		this.updateHSL();
 	}
 
 	get green() { return this._green; }
+	get g() { return this._green; }
+	set g(g: number) { this.green = g; }
 	set green(g: number) {
 		this._green = applyBounds(0, g, 255);
 		this.updateHSL();
 	}
 
 	get blue() { return this._blue; }
+	get b() { return this._blue; }
+	set b(b: number) { this.blue = b; }
 	set blue(b: number) {
 		this._blue = applyBounds(0, b, 255);
 		this.updateHSL();
@@ -103,18 +109,24 @@ export class Color {
 	private _lightness: number = 0;
 
 	get hue() { return this._hue; }
+	get h() { return this._hue; }
+	set h(h: number) { this.hue = h; }
 	set hue(h: number) {
 		this._hue = applyBounds(0, h, 360);
 		this.updateRGB();
 	}
 
 	get saturation() { return this._saturation; }
+	get s() { return this._saturation; }
+	set s(s: number) { this.saturation = s; }
 	set saturation(s: number) {
 		this._saturation = applyBounds(0, s, 100);
 		this.updateRGB();
 	}
 
 	get lightness() { return this._lightness; }
+	get l() { return this._lightness; }
+	set l(l: number) { this.lightness = l; }
 	set lightness(l: number) {
 		this._lightness = applyBounds(0, l, 100);
 		this.updateRGB();

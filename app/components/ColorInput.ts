@@ -6,7 +6,7 @@ import { ActiveColorService } from '../services/ActiveColorService';
 	selector: 'color-input',
 	template: `
 	<label *ngIf="label" [style.width.px]='80'>{{label}}</label>
-	<input #self [value]="output" (keyup.enter)="setColor(self.value)"/>
+	<input #self [value]="output" (keyup.enter)="submit(self.value)"/>
 	`,
 	styles: [``]
 })
@@ -21,15 +21,6 @@ export class ColorInput {
 		_activeColorService.activeColor$.subscribe((color) => {
 			this.color = color;
 		});
-	}
-
-	setColor (s: string){
-
-		if (this.mode) {
-
-		}
-
-		this._activeColorService.setActiveColorString(s);
 	}
 
 	ngOnChanges() {
@@ -62,4 +53,20 @@ export class ColorInput {
 		if (m === 's') { return this.color.saturation; }
 		if (m === 'l') { return this.color.lightness; }
 	}
+
+	submit(s: string) {
+		this.setColor(s, this.mode);
+	}
+
+	setColor (value: string, mode?: string){
+		if (mode) {
+			var newColor = this.color;
+			newColor[this.mode] = parseInt(value);
+			this._activeColorService.setActiveColor(newColor);
+		} else {
+			this._activeColorService.setActiveColorString(value);
+		}
+	}
+
+
 }
