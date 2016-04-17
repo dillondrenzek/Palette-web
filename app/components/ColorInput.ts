@@ -5,10 +5,23 @@ import { ActiveColorService } from '../services/ActiveColorService';
 @Component({
 	selector: 'color-input',
 	template: `
-	<label *ngIf="label" [style.width.px]='80'>{{label}}</label>
-	<input #self [value]="output" (keyup.enter)="submit(self.value)"/>
+	<label class="form-label col-xs-2" *ngIf="label">{{label}}</label>
+	<input type="text" class="form-control col-xs-10" #self [value]="output" (keyup.enter)="submit(self.value)"/>
 	`,
-	styles: [``]
+	styles: [`
+		// label {
+		// 	text-align: center;
+		// }
+		//
+		// input {
+		// 	text-align: center;
+		// 	font-size: 2rem;
+		// 	width: 100%;
+		// 	margin: 0 auto;
+		// 	padding: 10px 0;
+		// 	-webkit-appearance: none;
+		// }
+		`]
 })
 
 export class ColorInput {

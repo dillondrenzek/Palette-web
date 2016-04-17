@@ -2,7 +2,7 @@
   "name": "palette",
   "version": "0.2.8",
   "scripts": {
-    "start": "concurrently \"npm run tsc:w\" \"npm run gulp\" \"npm run lite\" ",
+    "start": "concurrently \"npm run tsc:w\" \"npm run style:w\" \"npm run lite\" ",
     "test": "live-server --open=spec.html",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
@@ -28,7 +28,6 @@
     "concurrently": "^2.0.0",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
-    "gulp-jade": "^1.1.0",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.1.0",
     "gulp-sourcemaps": "^1.6.0",

@@ -5,7 +5,13 @@ import { ActiveColorService } from '../services/ActiveColorService';
 @Component({
 	selector: 'color-output',
 	template: `<div [style.backgroundColor]="color.rgbString"></div>`,
-	styles: [``]
+	styles: [`
+		div {
+			display: block;
+			min-width: 100px;
+			min-height: 100px;
+		}
+		`]
 })
 
 export class ColorOutput {

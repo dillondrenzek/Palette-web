@@ -15,7 +15,6 @@ gulp.task('watch', ['watch:styl']);
 
 // Render Stylus
 
-gulp.watch('app/**/*.styl', ['styl']);
 
 gulp.task('styl', function(){
 	return gulp.src('app/**/*.styl')
@@ -55,6 +54,6 @@ gulp.task('clean:build', function(){
 });
 gulp.task('clean:npm', function(){
 	return clean([
-		'node_modules',
+		'node_modules/**',
 		'npm-debug.log*']);
 });

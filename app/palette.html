@@ -1,32 +1,39 @@
 <!-- <div class="container"> -->
 
-	<header>
+<div class="container">
+	<header class="row">
 		<h1>
 			{{appTitle}}
 		</h1>
 	</header>
 
-	<section>
-		<h2>Active Color</h2>
+	<section class="row">
+
+		<h4>Active Color</h4>
 		<color-output></color-output>
-		<div>
-			<color-input mode="r" label="Red"></color-input>
-			<color-input mode="g" label="Green"></color-input>
-			<color-input mode="b" label="Blue"></color-input>
+		<div class="row">
+			<div class="col-xs-4">
+				<color-input class="col-xs-12 form-group" mode="r" label="Red"></color-input>
+				<color-input class="col-xs-12 form-group" mode="g" label="Green"></color-input>
+				<color-input class="col-xs-12 form-group" mode="b" label="Blue"></color-input>
+			</div>
+			<div class="col-xs-4">
+				<color-input class="col-xs-12 form-group" mode="h" label="Hue"></color-input>
+				<color-input class="col-xs-12 form-group" mode="s" label="Saturation"></color-input>
+				<color-input class="col-xs-12 form-group" mode="l" label="Lightness"></color-input>
+			</div>
 		</div>
-		<div>
-			<color-input mode="h" label="Hue"></color-input>
-			<color-input mode="s" label="Saturation"></color-input>
-			<color-input mode="l" label="Lightness"></color-input>
-		</div>
+
 	</section>
 
-	<footer>
+	<footer class="row">
 		<small>
 			{{appTitle}} {{appVersion}}
 		</small>
 
 	</footer>
+</div>
+
 
 
 <!-- </div> -->
