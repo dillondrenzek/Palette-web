@@ -3,6 +3,9 @@ var watch = require('gulp-watch');
 var plumber = require('gulp-plumber');
 var stylus = require('gulp-stylus');
 var clean = require('del');
+var postcss = require('gulp-postcss');
+var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('autoprefixer');
 
 // Default Gulp
 gulp.task('default', ['styl']);
@@ -12,9 +15,14 @@ gulp.task('watch', ['watch:styl']);
 
 // Render Stylus
 
+gulp.watch('app/**/*.styl', ['styl']);
+
 gulp.task('styl', function(){
 	return gulp.src('app/**/*.styl')
 		.pipe(stylus())
+		.pipe(sourcemaps.init())
+		.pipe(postcss([ autoprefixer() ]))
+		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('built/css/'));
 });
 
@@ -23,6 +31,9 @@ gulp.task('watch:styl', function(){
 		.pipe(watch('app/**/*.styl', {verbose: true}))
 		.pipe(plumber())
     .pipe(stylus())
+		.pipe(sourcemaps.init())
+		.pipe(postcss([ autoprefixer() ]))
+		.pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('built/css/'));
 });
 
