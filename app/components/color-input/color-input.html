@@ -1,0 +1,2 @@
+<label class="form-label col-xs-2" *ngIf="label">{{label}}</label>
+<input type="text" class="form-control col-xs-10" #self [value]="output" (keyup.enter)="submit(self.value)"/>

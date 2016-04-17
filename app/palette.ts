@@ -1,6 +1,6 @@
 import { Component } from 'angular2/core';
-import { ColorOutput } from './components/ColorOutput';
-import { ColorInput } from './components/ColorInput';
+import { ColorOutput } from './components/color-output/ColorOutput';
+import { ColorInput } from './components/color-input/ColorInput';
 import { Color } from './models/Color';
 import { ActiveColorService } from './services/ActiveColorService';
 

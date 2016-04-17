@@ -1,17 +1,11 @@
 import { Component, Input } from 'angular2/core';
-import { Color } from '../models/Color';
-import { ActiveColorService } from '../services/ActiveColorService';
+import { Color } from '../../models/Color';
+import { ActiveColorService } from '../../services/ActiveColorService';
 
 @Component({
 	selector: 'color-output',
 	template: `<div [style.backgroundColor]="color.rgbString"></div>`,
-	styles: [`
-		div {
-			display: block;
-			min-width: 100px;
-			min-height: 100px;
-		}
-		`]
+	styleUrls: ['built/css/components/color-output/color-output.css']
 })
 
 export class ColorOutput {

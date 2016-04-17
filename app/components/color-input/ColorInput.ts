@@ -1,27 +1,11 @@
 import { Component, Input } from 'angular2/core';
-import { Color } from '../models/Color';
-import { ActiveColorService } from '../services/ActiveColorService';
+import { Color } from '../../models/Color';
+import { ActiveColorService } from '../../services/ActiveColorService';
 
 @Component({
 	selector: 'color-input',
-	template: `
-	<label class="form-label col-xs-2" *ngIf="label">{{label}}</label>
-	<input type="text" class="form-control col-xs-10" #self [value]="output" (keyup.enter)="submit(self.value)"/>
-	`,
-	styles: [`
-		// label {
-		// 	text-align: center;
-		// }
-		//
-		// input {
-		// 	text-align: center;
-		// 	font-size: 2rem;
-		// 	width: 100%;
-		// 	margin: 0 auto;
-		// 	padding: 10px 0;
-		// 	-webkit-appearance: none;
-		// }
-		`]
+	templateUrl: `app/components/color-input/color-input.html`,
+	styleUrls: [`built/css/components/color-input/color-input.css`]
 })
 
 export class ColorInput {
