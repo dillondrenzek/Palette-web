@@ -20,24 +20,28 @@ describe( 'ColorInput', () => {
 			service.setActiveColor(color);
 		});
 
+		it('- output should return a string', () => {
+			expect(typeof input.output).toEqual('string');
+		});
+
 		it('- if a mode is set, should output correct value', () => {
 			input.mode = 'r';
-			expect(input.output).toEqual(color.red);
+			expect(input.output).toEqual(color.red.toString());
 
 			input.mode = 'g';
-			expect(input.output).toEqual(color.green);
+			expect(input.output).toEqual(color.green.toString());
 
 			input.mode = 'b';
-			expect(input.output).toEqual(color.blue);
+			expect(input.output).toEqual(color.blue.toString());
 
 			input.mode = 'h';
-			expect(input.output).toEqual(color.hue);
+			expect(input.output).toEqual(color.hue.toString());
 
 			input.mode = 's';
-			expect(input.output).toEqual(color.saturation);
+			expect(input.output).toEqual(color.saturation.toString());
 
 			input.mode = 'l';
-			expect(input.output).toEqual(color.lightness);
+			expect(input.output).toEqual(color.lightness.toString());
 		});
 	});
 
@@ -99,12 +103,12 @@ describe( 'ColorInput', () => {
 		});
 
 		it('- if a mode is set, it should correctly affect the activeColor on submit', () => {
-			expect(input.output).toEqual(color.red);
+			expect(input.output).toEqual(color.red.toString());
 
 			var newValue = 11;
 			input.submit(newValue.toString());
 
-			expect(input.output).toEqual(newValue);
+			expect(input.output).toEqual(newValue.toString());
 		});
 	});
 });

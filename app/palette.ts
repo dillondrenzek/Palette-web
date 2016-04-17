@@ -21,7 +21,6 @@ export class Palette {
 	constructor(private _activeColorService: ActiveColorService) {}
 
 	ngOnInit() {
-		var c: Color;
 		this._activeColorService.setActiveColor(this.defaultColor);
 	}
 }

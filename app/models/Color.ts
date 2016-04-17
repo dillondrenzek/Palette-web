@@ -85,6 +85,10 @@ export class Color {
 		return 'rgb('+this.red+','+this.green+','+this.blue+')';
 	}
 
+	get rgb(): number[] {
+		return([this.red, this.green, this.blue]);
+	}
+
 
 	// Hue, Saturation, Lightness
 
@@ -132,8 +136,12 @@ export class Color {
 		this.updateRGB();
 	}
 
-	hslString(): string {
+	get hslString(): string {
 		return 'hsl('+this.hue+','+this.saturation+','+this.lightness+')';
+	}
+
+	get hsl(): number[] {
+		return([this.hue, this.saturation, this.lightness]);
 	}
 
 

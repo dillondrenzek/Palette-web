@@ -27,31 +27,20 @@ export class ColorInput {
 
 	}
 
-	get output(): any {
-
+	get output(): string {
 		if (this.mode) {
-			if (this.color[this.mode]) {
-				return this.color[this.mode];
-			} else {
-				var m = this.mode;
-				if (m === 'r') { return this.color.red; }
-				if (m === 'g') { return this.color.green; }
-				if (m === 'b') { return this.color.blue; }
-				if (m === 'h') { return this.color.hue; }
-				if (m === 's') { return this.color.saturation; }
-				if (m === 'l') { return this.color.lightness; }
-			}
+			return this.outputWithMode(this.mode);
 		}
 		return this.color.rgbString;
 	}
 
-	outputWithMode(m: string) {
-		if (m === 'r') { return this.color.red; }
-		if (m === 'g') { return this.color.green; }
-		if (m === 'b') { return this.color.blue; }
-		if (m === 'h') { return this.color.hue; }
-		if (m === 's') { return this.color.saturation; }
-		if (m === 'l') { return this.color.lightness; }
+	outputWithMode(m: string): string {
+		if (m === 'r') { return this.color.red.toString(); }
+		if (m === 'g') { return this.color.green.toString(); }
+		if (m === 'b') { return this.color.blue.toString(); }
+		if (m === 'h') { return this.color.hue.toString(); }
+		if (m === 's') { return this.color.saturation.toString(); }
+		if (m === 'l') { return this.color.lightness.toString(); }
 	}
 
 	submit(s: string) {
