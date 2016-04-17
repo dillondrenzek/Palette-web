@@ -16,6 +16,10 @@ import { ActiveColorService } from '../services/ActiveColorService';
 
 export class ColorOutput {
 
+	@Input() mode: any;
+	private _output: number;
+
+
 	color: Color;
 
 	constructor(private _activeColorService: ActiveColorService) {
@@ -26,5 +30,19 @@ export class ColorOutput {
 
 	ngOnInit() {
 	}
+
+	get output(): number {
+		var m = this.mode;
+
+		if (m === 'r') { return this.color.red; }
+		if (m === 'g') { return this.color.green; }
+		if (m === 'b') { return this.color.blue; }
+		if (m === 'h') { return this.color.hue; }
+		if (m === 's') { return this.color.saturation; }
+		if (m === 'l') { return this.color.lightness; }
+		return 0;
+	}
+
+	
 
 }
