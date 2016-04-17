@@ -1,6 +1,6 @@
 {
   "name": "palette",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "scripts": {
     "start": "concurrently \"npm run tsc:w\" \"npm run style:w\" \"npm run lite\" ",
     "test": "live-server --open=spec.html",
