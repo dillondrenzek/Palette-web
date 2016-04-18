@@ -20,4 +20,8 @@ export class ActiveColorController {
 	ngOnInit() {
 		this._activeColorService.setActiveColor(this.defaultColor);
 	}
+
+	getActiveColor(): Color {
+		return this._activeColorService.activeColor;
+	}
 }
