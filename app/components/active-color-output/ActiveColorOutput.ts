@@ -3,12 +3,12 @@ import { Color } from '../../models/Color';
 import { ActiveColorService } from '../../services/ActiveColorService';
 
 @Component({
-	selector: 'color-output',
+	selector: 'active-color-output',
 	template: `<div [style.backgroundColor]="color.rgbString"></div>`,
-	styleUrls: ['built/css/components/color-output/color-output.css']
+	styleUrls: ['built/css/components/active-color-output/active-color-output.css']
 })
 
-export class ColorOutput {
+export class ActiveColorOutput {
 
 	@Input() mode: any;
 	private _output: number;
