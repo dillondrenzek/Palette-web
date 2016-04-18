@@ -1,6 +1,6 @@
 import { Component } from 'angular2/core';
 import { ColorOutput } from './components/color-output/ColorOutput';
-import { ColorInput } from './components/color-input/ColorInput';
+import { ActiveColorInput } from './components/active-color-input/ActiveColorInput';
 import { Color } from './models/Color';
 import { ActiveColorService } from './services/ActiveColorService';
 
@@ -8,7 +8,7 @@ import { ActiveColorService } from './services/ActiveColorService';
 	selector: 'app',
 	templateUrl: 'app/palette.html',
 	styleUrls: ['built/css/palette.css'],
-	directives: [ColorOutput, ColorInput],
+	directives: [ColorOutput, ActiveColorInput],
 	providers: [ActiveColorService]
 })
 

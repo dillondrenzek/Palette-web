@@ -3,12 +3,12 @@ import { Color } from '../../models/Color';
 import { ActiveColorService } from '../../services/ActiveColorService';
 
 @Component({
-	selector: 'color-input',
-	templateUrl: `app/components/color-input/color-input.html`,
-	styleUrls: [`built/css/components/color-input/color-input.css`]
+	selector: 'active-color-input',
+	templateUrl: `app/components/active-color-input/active-color-input.html`,
+	styleUrls: [`built/css/components/active-color-input/active-color-input.css`]
 })
 
-export class ColorInput {
+export class ActiveColorInput {
 
 	color: Color;
 	@Input() mode: string;

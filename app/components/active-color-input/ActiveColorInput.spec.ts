@@ -1,20 +1,20 @@
-import { ColorInput } from './ColorInput';
-import { Color } from '../models/Color';
-import { ActiveColorService } from '../services/ActiveColorService';
+import { ActiveColorInput } from './ActiveColorInput';
+import { Color } from '../../models/Color';
+import { ActiveColorService } from '../../services/ActiveColorService';
 
-describe( 'ColorInput', () => {
+describe( 'ActiveColorInput', () => {
 
 	describe(':: output', () => {
 		let color: Color;
 		let color2: Color;
-		let input: ColorInput
+		let input: ActiveColorInput
 		let service: ActiveColorService;
 
 		beforeEach(() => {
 			color = new Color('rgb(234,123,12)');
 			color2 = new Color('rgb(123, 234, 12)');
 			service = new ActiveColorService();
-			input = new ColorInput(service);
+			input = new ActiveColorInput(service);
 
 			// set activeColor
 			service.setActiveColor(color);
@@ -48,14 +48,14 @@ describe( 'ColorInput', () => {
 	describe('=> ActiveColorService', () => {
 		let color: Color;
 		let color2: Color;
-		let input: ColorInput
+		let input: ActiveColorInput
 		let service: ActiveColorService;
 
 		beforeEach(() => {
 			color = new Color('rgb(234,123,12)');
 			color2 = new Color('rgb(123, 234, 12)');
 			service = new ActiveColorService();
-			input = new ColorInput(service);
+			input = new ActiveColorInput(service);
 
 			// set activeColor
 			service.setActiveColor(color);
@@ -84,14 +84,14 @@ describe( 'ColorInput', () => {
 	describe(':: mode', () => {
 		let color: Color;
 		let color2: Color;
-		let input: ColorInput
+		let input: ActiveColorInput
 		let service: ActiveColorService;
 
 		beforeEach(() => {
 			color = new Color('rgb(234,123,12)');
 			color2 = new Color('rgb(123, 234, 12)');
 			service = new ActiveColorService();
-			input = new ColorInput(service);
+			input = new ActiveColorInput(service);
 
 			// set activeColor
 			service.setActiveColor(color);
