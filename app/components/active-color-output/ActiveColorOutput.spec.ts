@@ -1,6 +1,6 @@
 import { ActiveColorOutput } from './ActiveColorOutput';
-import { ActiveColorService } from '../services/ActiveColorService';
-import { Color } from '../models/Color';
+import { ActiveColorService } from '../../services/ActiveColorService';
+import { Color } from '../../models/Color';
 
 describe( 'ActiveColorOutput', () => {
 
