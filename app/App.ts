@@ -3,12 +3,12 @@ import { ActiveColorController } from './components/active-color-ctrl/ActiveColo
 
 @Component({
 	selector: 'app',
-	templateUrl: 'app/palette.html',
-	styleUrls: ['built/css/palette.css'],
+	templateUrl: 'app/app.html',
+	styleUrls: ['built/css/app.css'],
 	directives: [ActiveColorController]
 })
 
-export class Palette {
+export class App {
 	appTitle: string = "Palette";
 	appVersion: string = "v0.3.0";
 

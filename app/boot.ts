@@ -1,4 +1,4 @@
 import { bootstrap } from 'angular2/platform/browser';
-import { Palette } from './palette';
+import { App } from './App';
 
-bootstrap(Palette);
+bootstrap(App);
