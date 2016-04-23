@@ -10,7 +10,7 @@ import { ActiveColorController } from './components/active-color-ctrl/ActiveColo
 
 export class App {
 	appTitle: string = "Palette";
-	appVersion: string = "v0.3.0";
+	appVersion: string = "v0.4.0";
 
 	constructor() {}
 }
