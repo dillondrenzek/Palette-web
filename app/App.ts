@@ -13,7 +13,7 @@ import { ActiveColorService } from './services/ActiveColorService';
 
 export class App {
 	appTitle: string = "Palette";
-	appVersion: string = "v0.4.1";
+	appVersion: string = "v0.4.2";
 
 	constructor(private _activeColorService: ActiveColorService) {}
 }
