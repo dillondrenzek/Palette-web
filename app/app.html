@@ -1,26 +1,50 @@
-<!-- <div class="container"> -->
-
-<div class="container">
-	<header class="row">
-		<h1>
-			{{appTitle}}
-		</h1>
-	</header>
-
-	<section class="row">
-
-		<active-color-ctrl class="col-xs-8"></active-color-ctrl>
-
-	</section>
-
-	<footer class="row">
-		<small>
-			{{appTitle}} {{appVersion}}
-		</small>
-
-	</footer>
-</div>
+<header>
+	<div><h1>
+		{{appTitle}}
+	</h1></div>
+	<div><small>
+		{{appVersion}}
+	</small></div>
+</header>
 
 
 
-<!-- </div> -->
+<section>
+
+	<div class="row">
+
+		<!-- Active Color Controller -->
+		<active-color-ctrl class="col-xs-12"></active-color-ctrl>
+
+		<!-- Palette Controller -->
+		<palette-ctrl class="col-xs-12">
+
+			<div class="col-md-12">
+				<swatch>swatch</swatch>
+				<swatch>swatch</swatch>
+				<swatch>swatch</swatch>
+				<swatch>swatch</swatch>
+			</div>
+
+			<div class="col-md-4">
+				<button type="button" name="button" class="col-xs-4 btn btn-primary">Save</button>
+				<button type="button" name="button" class="col-xs-4 btn btn-default">Clear</button>
+				<button type="button" name="button" class="col-xs-4 btn btn-danger">Delete</button>
+			</div>
+
+		</palette-ctrl>
+
+
+
+	</div>
+
+</section>
+
+
+
+
+<!-- <footer>
+	<small>
+		{{appTitle}} {{appVersion}}
+	</small>
+</footer> -->

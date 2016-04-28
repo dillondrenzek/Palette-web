@@ -1,17 +1,29 @@
-active-color-output,
-color-input
+// *,
+// *:before,
+// *:after
+// 	box-sizing border-box
+// 	margin 0
+// 	padding 0
+
+active-color-ctrl
 	display block
 
-.container
-	position: absolute;
+app
+	// display block
+	position absolute
 	top 0
 	bottom 0
-	left 15px
-	right 15px
+	left 50px
+	right 50px
+
 	display flex
 	flex-direction column
 	flex-wrap nowrap
-	justify-content center
+	justify-content flex-start
+	align-items strentch
+	width 50%
+	margin 0 auto
+
 
 	header
 		flex 0 0 65px
@@ -19,76 +31,9 @@ color-input
 	section
 		flex 1 0 auto
 		display flex
-		flex-direction column
+		flex-direction row
 		flex-wrap nowrap
 
-		active-color-output
-			flex 1 0 auto
-			display flex
-			flex-direction row
-			flex-wrap nowrap
-			justify-content center
-			align-items stretch
-
-			div
-				flex 1 0 auto
 
 	footer
 		flex 0 0 50px
-
-
-
-//
-//
-// .container
-// 	width 480px
-// 	// height 540px
-// 	margin 0 auto
-//
-// 	> *
-// 		border-top 1px solid #eaeaea
-//
-// 	header
-// 		width 100%
-// 		margin 0
-// 		padding 10px 0 20px
-//
-// 	section
-// 		width 100%
-// 		margin 0
-// 		padding 0
-//
-// 		active-color-output
-// 			display block
-// 			width 100%
-// 			height 200px
-//
-//
-// 		.input-group
-// 			width 100%
-// 			display flex
-// 			flex-direction row
-// 			flex-wrap nowrap
-// 			justify-content center
-// 			align-items stretch
-//
-//
-// 			color-input
-// 				min-height 100px
-// 				flex 1 1 30%
-// 				display flex
-// 				flex-direction column-reverse
-// 				flex-wrap nowrap
-// 				align-items stretch
-// 				> input
-// 					flex 0 1 100%
-// 					display block
-//
-//
-// 	footer
-// 		width 100%
-// 		> *
-// 			display block
-// 			width 50%
-// 			margin 0 auto
-// 			text-align center
