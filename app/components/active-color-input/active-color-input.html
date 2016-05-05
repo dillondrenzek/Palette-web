@@ -1,9 +1,7 @@
-<label class="col-xs-3"
-	*ngIf="label">
+<label *ngIf="label">
 	{{label}}
 </label>
 
-<input type="text" class="col-xs-12"
-	#self
+<input type="text" class="col-xs-12" #self
 	[value]="output"
 	(keyup.enter)="submit(self.value)"/>

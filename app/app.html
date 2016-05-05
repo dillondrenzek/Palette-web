@@ -1,23 +1,25 @@
-<header>
-	<div><h1>
-		{{appTitle}}
-	</h1></div>
-	<div><small>
-		{{appVersion}}
-	</small></div>
+<header class="col-xs-12">
+	<div>
+		<h1>
+			{{appTitle}}
+			<small>{{appVersion}}</small>
+		</h1>
+	</div>
 </header>
 
 
 
-<section>
+<section class="col-xs-12">
 
 	<div class="row">
 
+		<div class="col-xs-12" active-color-background></div>
+
 		<!-- Active Color Controller -->
-		<active-color-ctrl class="col-xs-12"></active-color-ctrl>
+		<active-color-ctrl class="col-xs-12 col-md-8"></active-color-ctrl>
 
 		<!-- Palette Controller -->
-		<palette-ctrl class="col-xs-12"></palette-ctrl>
+		<palette-ctrl class="col-xs-12 col-md-4"></palette-ctrl>
 
 	</div>
 

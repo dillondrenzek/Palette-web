@@ -22,4 +22,8 @@ export class PaletteController {
 		console.info('colors:', this.colors);
 	}
 
+	clear() {
+		this.colors = [];
+	}
+
 }
