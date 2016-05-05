@@ -12,7 +12,7 @@ import { Color } from '../../models/Color';
 
 export class ActiveColorController {
 
-	defaultColor: Color = new Color('rgb(145,145,56)');
+	defaultColor: Color = new Color('rgb(213,75,32)');
 	color: Color;
 
 	constructor(

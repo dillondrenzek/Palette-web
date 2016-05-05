@@ -14,7 +14,7 @@ import { ActiveColorOutputDirective } from './directives/active-color-output/Act
 
 export class App {
 	appTitle: string = "Palette";
-	appVersion: string = "v0.4.2";
+	appVersion: string = "v0.4.3";
 
 	constructor(private _activeColorService: ActiveColorService) {}
 }
