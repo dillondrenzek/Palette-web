@@ -7,6 +7,7 @@ import { Color } from '../../models/Color';
 @Component({
 	selector: 'active-color-ctrl',
 	templateUrl: 'app/components/active-color-ctrl/active-color-ctrl.html',
+	styleUrls: ['built/css/components/active-color-ctrl/active-color-ctrl.css'],
 	directives: [ActiveColorOutputDirective, ActiveColorInput]
 })
 

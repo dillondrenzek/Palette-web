@@ -6,6 +6,7 @@ import { ActiveColorService } from '../../services/ActiveColorService';
 @Component({
 	selector: 'palette-ctrl',
 	templateUrl: 'app/components/palette-ctrl/palette-ctrl.html',
+	styleUrls: ['built/css/components/palette-ctrl/palette-ctrl.css'],
 	directives: [ColorOutput]
 })
 

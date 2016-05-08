@@ -4,6 +4,7 @@ import { ActiveColorService } from '../../services/ActiveColorService';
 
 @Component({
 	selector: 'active-color-input',
+	
 	templateUrl: `app/components/active-color-input/active-color-input.html`,
 	styleUrls: [`built/css/components/active-color-input/active-color-input.css`]
 })

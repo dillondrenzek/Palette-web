@@ -11,7 +11,7 @@ import { ActiveColorService } from '../../services/ActiveColorService';
 export class ActiveColorOutput {
 
 	@Input() mode: any;
-	private _output: number;
+
 
 
 	color: Color;
@@ -22,9 +22,9 @@ export class ActiveColorOutput {
 		});
 	}
 
-	ngOnInit() {
-	}
 
+
+	private _output: number;
 	get output(): number {
 		var m = this.mode;
 

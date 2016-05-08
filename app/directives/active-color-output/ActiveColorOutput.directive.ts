@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, HostBinding } from 'angular2/core';
+import { Directive, ElementRef, Input, HostBinding, ChangeDetectorRef } from 'angular2/core';
 import { Color } from '../../models/Color';
 import { ActiveColorService } from '../../services/ActiveColorService';
 
@@ -13,13 +13,14 @@ import { ActiveColorService } from '../../services/ActiveColorService';
 export class ActiveColorOutputDirective {
 
 	@HostBinding('style.backgroundColor') backgroundColor: string;
-	
+
 	private _element: Element;
 
 
 	constructor(
 	private _el: ElementRef,
-	private _activeColorService: ActiveColorService) {
+	private _activeColorService: ActiveColorService,
+	private _cdr: ChangeDetectorRef) {
 
 		// save element ref
 		this._element = _el.nativeElement;
@@ -32,18 +33,18 @@ export class ActiveColorOutputDirective {
 
 	}
 
-	private _output: number;
-	get output(): number {
-		var m = this.mode;
-
-		if (m === 'r') { return this.color.red; }
-		if (m === 'g') { return this.color.green; }
-		if (m === 'b') { return this.color.blue; }
-		if (m === 'h') { return this.color.hue; }
-		if (m === 's') { return this.color.saturation; }
-		if (m === 'l') { return this.color.lightness; }
-		return 0;
-	}
+	// private _output: number;
+	// get output(): number {
+	// 	var m = this.mode;
+	//
+	// 	if (m === 'r') { return this.color.red; }
+	// 	if (m === 'g') { return this.color.green; }
+	// 	if (m === 'b') { return this.color.blue; }
+	// 	if (m === 'h') { return this.color.hue; }
+	// 	if (m === 's') { return this.color.saturation; }
+	// 	if (m === 'l') { return this.color.lightness; }
+	// 	return 0;
+	// }
 
 
 	private _color: Color;
@@ -55,6 +56,7 @@ export class ActiveColorOutputDirective {
 	setAttributeModes(){
 		if (this._element.hasAttribute('active-color-background')) {
 			this.backgroundColor = this.color.rgbString;
+			this._cdr.detectChanges();
 		}
 	}
 
