@@ -1,5 +1,5 @@
-node_modules/
-built/
-typings/
+node_modules
+built
+typings
 
 npm-debug.log*
