@@ -1,4 +1,4 @@
-import { Component, Input, Inject } from 'angular2/core';
+import { Component, Input, Inject } from '@angular/core';
 import { Color } from '../../models/Color';
 import { ColorOutput } from '../../directives/color-output/ColorOutput';
 import { ActiveColorService } from '../../services/ActiveColorService';

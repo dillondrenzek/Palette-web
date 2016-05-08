@@ -1,4 +1,4 @@
-import { Component, Injectable } from 'angular2/core';
+import { Component, Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Color } from '../models/Color';
 

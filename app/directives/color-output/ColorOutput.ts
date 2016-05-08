@@ -1,4 +1,4 @@
-import { Component, Input } from 'angular2/core';
+import { Component, Input } from '@angular/core';
 import { Color } from '../../models/Color';
 // import { ActiveColorService } from '../../services/ActiveColorService';
 

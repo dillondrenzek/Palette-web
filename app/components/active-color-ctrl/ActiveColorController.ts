@@ -1,4 +1,4 @@
-import { Component, Inject } from 'angular2/core';
+import { Component, Inject } from '@angular/core';
 import { ActiveColorOutputDirective } from '../../directives/active-color-output/ActiveColorOutput.directive';
 import { ActiveColorInput } from '../active-color-input/ActiveColorInput';
 import { ActiveColorService } from '../../services/ActiveColorService';

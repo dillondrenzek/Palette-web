@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component } from '@angular/core';
 import { ActiveColorController } from './components/active-color-ctrl/ActiveColorController';
 import { PaletteController } from './components/palette-ctrl/PaletteController';
 import { ActiveColorService } from './services/ActiveColorService';

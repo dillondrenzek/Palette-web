@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, HostBinding, ChangeDetectorRef } from 'angular2/core';
+import { Directive, ElementRef, Input, HostBinding, ChangeDetectorRef } from '@angular/core';
 import { Color } from '../../models/Color';
 import { ActiveColorService } from '../../services/ActiveColorService';
 
