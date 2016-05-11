@@ -12,14 +12,14 @@
 <section class="col-xs-12">
 
 	<div class="row">
-
-		<div class="col-xs-12" active-color-background></div>
-
 		<!-- Active Color Controller -->
-		<active-color-ctrl class="col-xs-12 col-md-8"></active-color-ctrl>
+		<color-ctrl
+			class="col-xs-12"
+			[color]="activeColor"
+			(colorChanged)="setActiveColor($event)"></color-ctrl>
 
 		<!-- Palette Controller -->
-		<palette-ctrl class="col-xs-12 col-md-4"></palette-ctrl>
+		<palette-ctrl class="col-xs-12"></palette-ctrl>
 
 	</div>
 

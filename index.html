@@ -29,15 +29,15 @@
 	  <!-- 2. Configure SystemJS -->
 		<script src="systemjs.config.js"></script>
 	    <script>
-	      System.config({
-	        packages: {
-	          built: {
-	            format: 'register',
-	            defaultExtension: 'js'
-	          }
-	        }
-	      });
-				System.import('built/js/boot')
+	    //   System.config({
+	    //     packages: {
+	    //       built: {
+	    //         format: 'register',
+	    //         defaultExtension: 'js'
+	    //       }
+	    //     }
+	    //   });
+				System.import('palette')
 							.then(null, function(err){console.error()});
 
 		</script>

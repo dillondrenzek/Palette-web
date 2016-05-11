@@ -1,5 +1,5 @@
 <div class="col-xs-12">
-	<color-output class="" *ngFor="#color of colors" [color]="color" [height]="50"></color-output>
+	<div class="swatch" *ngFor="let color of colors" [color-background]="color"></div>
 </div>
 
 <div class="col-xs-12">
