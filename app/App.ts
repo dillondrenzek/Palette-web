@@ -26,7 +26,7 @@ import { Color } from './models/Color';
 
 export class App {
 	appTitle: string = "Palette";
-	appVersion: string = "v0.4.4";
+	appVersion: string = "v0.4.5";
 
 	defaultColor: Color = new Color('rgb(213,75,32)');
 

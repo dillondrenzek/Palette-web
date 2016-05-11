@@ -2,6 +2,7 @@
 * Testing framework has breaking changes:
 	* spec.html is gone
 	* .spec.ts files are stashed in spec/
+* ColorInputs extend the ngModel protocol
 	
 
 ## v0.3.0 - Basic User Input
