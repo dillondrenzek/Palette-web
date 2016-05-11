@@ -26,25 +26,15 @@ import { Color } from './models/Color';
 
 export class App {
 	appTitle: string = "Palette";
-	appVersion: string = "v0.4.3";
+	appVersion: string = "v0.4.4";
 
 	defaultColor: Color = new Color('rgb(213,75,32)');
 
 	constructor(private _activeColorService: ActiveColorService) {}
 
-	get activeColor(): Color { return this._activeColorService.activeColor; }
-	set activeColor(c: Color) { this._activeColorService.setActiveColor(c); }
-
 	ngAfterViewInit() {
-		this.activeColor = this.defaultColor;
-	}
+		console.info('setting default color:', this.defaultColor.rgbString);
+		this._activeColorService.setActiveColor(this.defaultColor);
 
-	setActiveColor(c: Color) {
-		this.activeColor = c;
-	}
-
-	getActiveColor(callback: () => void) {
-		console.info('getActiveColor(',callback,')');
-		callback(this.activeColor);
 	}
 }

@@ -1,7 +1,8 @@
-import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Inject, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Color } 					from '../../models/Color';
 import { ColorInput } 				from '../../components/color-input/ColorInput';
-import { ColorOutputDirective } 	from '../../directives/color-output/ColorOutput.directive';
+import { ColorOutput }				from '../../components/color-output/ColorOutput';
+import { ActiveColorService } 		from '../../services/ActiveColorService';
 
 @Component({
 	selector: 'color-ctrl',
@@ -9,18 +10,31 @@ import { ColorOutputDirective } 	from '../../directives/color-output/ColorOutput
 	styleUrls: ['built/css/controllers/color-ctrl/color-ctrl.css'],
 	directives: [
 		ColorInput,
-		ColorOutputDirective
+		ColorOutput
 	]
 })
 
 export class ColorController {
 
-	@Input() color: Color;
-	@Output() colorChanged = new EventEmitter<Color>();
+	// Getter/Setter References
+	private _color: Color;
 
-	ngOnChanges(change: any) {
-		if (change.color && change.color.currentValue) {
-			console.info('ColorController color:', this.color);
-		}
+	constructor(
+		private _cdr: ChangeDetectorRef,
+		@Inject(ActiveColorService) private _activeColorService: ActiveColorService
+	) {
+		this._activeColorService.activeColor$.subscribe(
+			(activeColor) => { this.color = activeColor; }
+		)
 	}
+
+	// Getters & Setters
+	get color(): Color 	{
+		return this._color;
+	}
+	set color(c: Color) {
+		this._color = c;
+		this._cdr.detectChanges();
+	}
+
 }

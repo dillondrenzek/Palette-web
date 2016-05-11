@@ -9,7 +9,7 @@ import { Color } from '../../models/Color';
 	selector: '[color-background]'
 })
 
-export class ColorOutputDirective {
+export class BackgroundColorOutputDirective {
 
 	@HostBinding('style.backgroundColor') background: string;
 
@@ -41,6 +41,6 @@ export class ColorOutputDirective {
 	get backgroundColor(): Color { return this._backgroundColor; }
 	set backgroundColor (bgC: Color) {
 		this._backgroundColor = bgC;
-		this.background = this._backgroundColor.rgbString;
+		this.background = (this._backgroundColor) ? this._backgroundColor.rgbString : 'transparent';
 	}
 }
