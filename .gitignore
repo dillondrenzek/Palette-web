@@ -1,3 +1,5 @@
+*.sketch
+
 node_modules
 built
 typings
