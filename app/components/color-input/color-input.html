@@ -1,8 +1,0 @@
-<label *ngIf="label" class="col-xs-3">
-	{{label}}
-</label>
-
-<input type="text" #self class="col-xs-9"
-	(focus)="didFocusInput($event)"
-	(blur)="didBlurInput($event)"
-	[value]="output"/>
