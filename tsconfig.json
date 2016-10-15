@@ -8,7 +8,10 @@
     "experimentalDecorators": true,
     "removeComments": false,
     "noImplicitAny": false,
-    "outDir": "built/js"
+    "baseUrl": ".",
+    "paths": {
+      "@palette/*": [ "app/*" ]
+    }
   },
   "exclude": [
     "node_modules",

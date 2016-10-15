@@ -1,7 +1,9 @@
-*.sketch
-
 node_modules
-built
 typings
 
 npm-debug.log*
+
+app/**/*.css
+app/**/*.js
+app/**/*.map
+!app/systemjs.config.js

@@ -15,23 +15,23 @@ gulp.task('watch', ['watch:styl']);
 
 // Render Stylus
 gulp.task('styl', function(){
-	return gulp.src('public/**/*.styl')
+	return gulp.src('app/**/*.styl')
 		.pipe(stylus())
 		.pipe(sourcemaps.init())
 		.pipe(postcss([ autoprefixer() ]))
 		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('public/'));
+		.pipe(gulp.dest('app/'));
 });
 
 gulp.task('watch:styl', function(){
-	return gulp.src('public/**/*.styl')
-		.pipe(watch('public/**/*.styl', {verbose: true}))
+	return gulp.src('app/**/*.styl')
+		.pipe(watch('app/**/*.styl', {verbose: true}))
 		.pipe(plumber())
     	.pipe(stylus())
 		.pipe(sourcemaps.init())
 		.pipe(postcss([ autoprefixer() ]))
 		.pipe(sourcemaps.write('.'))
-    	.pipe(gulp.dest('public/'));
+    	.pipe(gulp.dest('app/'));
 });
 
 
