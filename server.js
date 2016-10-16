@@ -1,5 +1,6 @@
 var express = require('express'),
     log = require('./server/_logging'),
+    metaApi = require('./server/metaApi'),
     path = require('path');
 
 
@@ -15,6 +16,8 @@ app.set('port', (process.env.PORT || 8080));
 
 // Log HTTP requests
 app.use('/*', log.httpRequests);
+
+app.use('/meta', metaApi);
 
 
 // Static files
