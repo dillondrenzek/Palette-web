@@ -1,0 +1,19 @@
+
+  <form class="form-group col-xs-12" *ngFor="let mode of _displayFields">
+
+    <div class="input-group" *ngIf="mode === 'red'">
+      <div class="input-group-addon">R</div>
+      <input type="text" class="form-control" placeholder="Blue">
+    </div>
+
+    <div class="input-group" *ngIf="mode === 'green'">
+      <div class="input-group-addon">G</div>
+      <input type="text" class="form-control" placeholder="Green">
+    </div>
+
+    <div class="input-group" *ngIf="mode === 'blue'">
+      <div class="input-group-addon">B</div>
+      <input type="text" class="form-control"  placeholder="Blue">
+    </div>
+
+  </form>

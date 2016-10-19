@@ -15,6 +15,7 @@
 
       // palette bundles
       '@palette/core': 'app/core/index.js',
+      '@palette/color': 'app/color/index.js',
 
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
