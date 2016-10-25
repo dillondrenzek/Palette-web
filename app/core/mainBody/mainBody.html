@@ -1,15 +1,19 @@
-<div class="jumbotron">
+<div class="jumbotron" [style.background]="backgroundColor">
 
   <div class="container">
 
+    <div class="col-xs-12 col-sm-4">
 
+      <color-input [color]="color" (onChange)="colorChanged($event)"></color-input>
+
+    </div>
 
   </div>
 
 </div>
 
-<div class="col-xs-12 col-sm-4">
+<!-- <div class="col-xs-12 col-sm-4">
 
-  <color-input [inputColor]="color"></color-input>
+  <pre> {{ color.toRGB() | json }} </pre>
 
-</div>
+</div> -->

@@ -9,7 +9,17 @@ import { RGB } from './interfaces';
 export class Color {
 
   // Raw Data Store
-  private _rgb: RGB = { red: 0, green: 0, blue: 0 };
+  _rgb: RGB = { red: 0, green: 0, blue: 0 };
+
+  get red(): number { return this._rgb.red; }
+  set red(r: number) { this._rgb.red = r; }
+
+  get green(): number { return this._rgb.green; }
+  set green(g: number) { this._rgb.green = g; }
+
+  get blue(): number { return this._rgb.blue; }
+  set blue(b: number) { this._rgb.blue = b; }
+
 
 
 
@@ -17,75 +27,11 @@ export class Color {
    * @param { RGB } - object w/ red, green, blue number values
    */
   constructor( colorObj?: RGB ) {
-    if (colorObj) this.set(colorObj);
+    if (colorObj) { this._rgb = colorObj; }
   }
 
+  toRGB(): RGB { return this._rgb; }
 
-
-
-
-// --------------------------------------------------
-// PUBLIC METHODS
-// --------------------------------------------------
-
-  getRGB(): RGB { return this._rgb; }
-
-  /**
-   * Set all values according the the items in color
-   * @param { RGB } - red, green or blue could be defined
-   */
-  set( color?: RGB ): boolean {
-    if (!color) return false;
-
-    // update the colors if they exist and are valid:
-
-    // - Red
-    if (color['red'] && validColorValue(color['red'], '255')){
-      this._rgb.red = color['red'];
-      console.info('Updated red:', this._rgb);
-    }
-
-    // - Green
-    if (color['green'] && validColorValue(color['green'], '255') ){
-      this._rgb.green = color['green'];
-      console.info('Updated green:', this._rgb);
-    }
-
-    // - Blue
-    if (color['blue'] && validColorValue(color['blue'], '255')){
-      this._rgb.blue = color['blue'];
-      console.info('Updated blue:', this._rgb);
-    }
-
-    return true;
-  }
-
-  /**
-   * Get/Set Red
-   * @return - value of red after get or set operation
-   */
-  red(set?: number): number {
-    if (set !== undefined) this.set({'red': set});
-    return this._rgb.red;
-  }
-
-  /**
-   * Get/Set Green
-   * @return - value of green after get or set operation
-   */
-  green(set?: number): number {
-    if (set !== undefined) this.set({'green': set});
-    return this._rgb.green;
-  }
-
-  /**
-   * Get/Set Blue
-   * @return - value of blue after get or set operation
-   */
-  blue(set?: number): number {
-    if (set !== undefined) this.set({'blue': set});
-    return this._rgb.blue;
-  }
 
   /**
    * Converts the Color into a usable CSS string

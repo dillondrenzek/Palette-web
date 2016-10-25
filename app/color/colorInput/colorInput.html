@@ -1,19 +1,43 @@
 
-  <form class="form-group col-xs-12" *ngFor="let mode of _displayFields">
+  <!-- <form class="form-group col-xs-12" [formGroup]="form">
 
-    <div class="input-group" *ngIf="mode === 'red'">
+    <div class="input-group">
       <div class="input-group-addon">R</div>
-      <input type="text" class="form-control" placeholder="Blue">
+      <input type="text" class="form-control" placeholder="Red"
+        formControlName="red">
     </div>
 
-    <div class="input-group" *ngIf="mode === 'green'">
+    <div class="input-group">
       <div class="input-group-addon">G</div>
-      <input type="text" class="form-control" placeholder="Green">
+      <input type="text" class="form-control" placeholder="Green"
+        formControlName="green">
     </div>
 
-    <div class="input-group" *ngIf="mode === 'blue'">
+    <div class="input-group">
       <div class="input-group-addon">B</div>
-      <input type="text" class="form-control"  placeholder="Blue">
+      <input type="text" class="form-control"  placeholder="Blue"
+        formControlName="blue">
+    </div>
+
+  </form> -->
+<div *ngIf="color" class="panel clearfix">
+
+  <form class="form-group col-xs-12" [formGroup]="form">
+
+    <div class="input-group">
+      <div class="input-group-addon">R</div>
+      <input type="text" class="form-control" placeholder="Red" formControlName="red">
+    </div>
+
+    <div class="input-group">
+      <div class="input-group-addon">G</div>
+      <input type="text" class="form-control" placeholder="Green" formControlName="green">
+    </div>
+
+    <div class="input-group">
+      <div class="input-group-addon">B</div>
+      <input type="text" class="form-control" placeholder="Blue" formControlName="blue">
     </div>
 
   </form>
+</div>

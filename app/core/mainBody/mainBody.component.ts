@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Color } from '@palette/color';
+import { Color, RGB } from '@palette/color';
 
 @Component({
   selector: 'main-body',
@@ -10,14 +10,27 @@ import { Color } from '@palette/color';
 })
 export class MainBody {
 
-  color: Color;
+  color: Color = new Color({
+    red: 255,
+    green: 200,
+    blue: 54
+  });
 
-  ngOnInit() {
-    this.color = new Color({
-      red: 23,
-      green: 132,
-      blue: 56
-    });
+  get backgroundColor(): string {
+    let str = [0,0,0];
+
+    if (this.color) {
+      str[0] = this.color.red;
+      str[1] = this.color.green;
+      str[2] = this.color.blue;
+    }
+
+    return ["rgb(", str[0], ',', str[1], ',', str[2], ")"].join('');
+  }
+
+  colorChanged(c: Color) {
+    console.info('colorChanged(',c,')')
+    this.color = c;
   }
 
 }
