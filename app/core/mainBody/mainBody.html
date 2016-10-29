@@ -1,20 +1,9 @@
-<!-- <div class="jumbotron">
-
-  <div class="container"></div>
-
-</div> -->
-
-<div class="col-xs-12 col-sm-12">
+<div id="single-color-form" class="col-xs-12 col-sm-12">
   <!-- color -->
-  <div class="col-xs-4 color" [style.background]="backgroundColor"
-    [style.height.px]="200">
-
-  </div>
-
-  <color-input [color]="color" (onChange)="colorChanged($event)"></color-input>
+  <div class="col-xs-4 color" [style.background]="backgroundColor" [style.height.px]="200"></div>
+  <color-input class="col-xs-4" [color]="color" (onChange)="colorChanged($event)"></color-input>
 </div>
 
-<button type="button" class="btn btn-default" (click)="onSave()">Save</button>
 
 <div class="col-xs-12 col-sm-8">
 

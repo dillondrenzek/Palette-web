@@ -1,21 +1,31 @@
 :host
     display: block;
+    position: relative;
     font-size: 24px;
     font-weight: 600;
 
+    .wrapper
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+
     form.form-group
         margin: 0;
-        padding: 20px;
+        padding: 0;
 
     .color-component
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         label
+            float: left;
+            width: 20%;
+            margin: 0;
             font-size: inherit;
-            margin-right: 15px;
+            padding-right: 15px;
             display: inline-block;
 
         input
-            width: auto;
+            float: left;
+            width: 80%;
             background-color: white;
             font-size: inherit;
             border: 0;
