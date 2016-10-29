@@ -1,19 +1,25 @@
-<div class="jumbotron" [style.background]="backgroundColor">
+<!-- <div class="jumbotron">
 
-  <div class="container">
+  <div class="container"></div>
 
-    <div class="col-xs-12 col-sm-4">
+</div> -->
 
-      <color-input [color]="color" (onChange)="colorChanged($event)"></color-input>
-
-    </div>
+<div class="col-xs-12 col-sm-12">
+  <!-- color -->
+  <div class="col-xs-4 color" [style.background]="backgroundColor"
+    [style.height.px]="200">
 
   </div>
 
+  <color-input [color]="color" (onChange)="colorChanged($event)"></color-input>
 </div>
 
-<!-- <div class="col-xs-12 col-sm-4">
+<button type="button" class="btn btn-default" (click)="onSave()">Save</button>
 
-  <pre> {{ color.toRGB() | json }} </pre>
+<div class="col-xs-12 col-sm-8">
 
-</div> -->
+  <p *ngFor="let color of savedColors">
+    {{color}}
+  </p>
+
+</div>

@@ -36,7 +36,7 @@ export class Color {
   /**
    * Converts the Color into a usable CSS string
    */
-  toString(): string {
+  toText(): string {
     return ['rgb(',
       this.red ,',',
       this.green, ',',

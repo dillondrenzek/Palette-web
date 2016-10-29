@@ -10,11 +10,9 @@ import { Color, RGB } from '@palette/color';
 })
 export class MainBody {
 
-  color: Color = new Color({
-    red: 255,
-    green: 200,
-    blue: 54
-  });
+  savedColors: string[] = [];
+
+  color: Color;
 
   get backgroundColor(): string {
     let str = [0,0,0];
@@ -29,8 +27,20 @@ export class MainBody {
   }
 
   colorChanged(c: Color) {
-    console.info('colorChanged(',c,')')
+    console.info('colorChanged(',c,')');
     this.color = c;
   }
 
+  onSave() {
+    console.info('onSave(',')', this.color);
+    this.savedColors.push(this.color.toText());
+  }
+
+  ngOnInit() {
+    this.color = new Color({
+      red: 255,
+      green: 255,
+      blue: 245
+    });
+  }
 }

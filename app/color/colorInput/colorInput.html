@@ -1,43 +1,26 @@
+<div *ngIf="color" class="clearfix">
 
-  <!-- <form class="form-group col-xs-12" [formGroup]="form">
+  <!-- Color Form -->
+  <form class="form-group col-xs-8" [formGroup]="form">
 
-    <div class="input-group">
-      <div class="input-group-addon">R</div>
-      <input type="text" class="form-control" placeholder="Red"
-        formControlName="red">
+    <!-- Red -->
+    <div class="color-component col-xs-12">
+      <label class="col-xs-1">R</label>
+      <input type="text" class="col-xs-4 form-control" placeholder="Red" formControlName="red">
     </div>
 
-    <div class="input-group">
-      <div class="input-group-addon">G</div>
-      <input type="text" class="form-control" placeholder="Green"
-        formControlName="green">
+    <!-- Green -->
+    <div class="color-component col-xs-12">
+      <label class="col-xs-1">G</label>
+      <input type="text" class="col-xs-4 form-control" placeholder="Green" formControlName="green">
     </div>
 
-    <div class="input-group">
-      <div class="input-group-addon">B</div>
-      <input type="text" class="form-control"  placeholder="Blue"
-        formControlName="blue">
-    </div>
-
-  </form> -->
-<div *ngIf="color" class="panel clearfix">
-
-  <form class="form-group col-xs-12" [formGroup]="form">
-
-    <div class="input-group">
-      <div class="input-group-addon">R</div>
-      <input type="text" class="form-control" placeholder="Red" formControlName="red">
-    </div>
-
-    <div class="input-group">
-      <div class="input-group-addon">G</div>
-      <input type="text" class="form-control" placeholder="Green" formControlName="green">
-    </div>
-
-    <div class="input-group">
-      <div class="input-group-addon">B</div>
-      <input type="text" class="form-control" placeholder="Blue" formControlName="blue">
+    <!-- Blue -->
+    <div class="color-component col-xs-12">
+      <label class="col-xs-1">B</label>
+      <input type="text" class="col-xs-4 form-control" placeholder="Blue" formControlName="blue">
     </div>
 
   </form>
+
 </div>
