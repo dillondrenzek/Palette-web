@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Color, RGB } from '@palette/color';
+import { Color, RGB, toHexString } from '@palette/color';
 
 @Component({
   selector: 'main-body',
@@ -10,9 +10,13 @@ import { Color, RGB } from '@palette/color';
 })
 export class MainBody {
 
-  savedColors: string[] = [];
+  savedColors: Color[] = [];
 
   color: Color;
+
+  get hexColor(): string {
+    return toHexString(this.color);
+  }
 
   get backgroundColor(): string {
     let str = [0,0,0];
@@ -32,8 +36,8 @@ export class MainBody {
   }
 
   onSave() {
-    console.info('onSave(',')', this.color);
-    this.savedColors.push(this.color.toText());
+    console.info('onSave(', this.color,')');
+    this.savedColors.push(this.color);
   }
 
   ngOnInit() {

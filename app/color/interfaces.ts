@@ -9,3 +9,9 @@ export interface HSL {
   saturation?: number,
   lightness?: number
 }
+
+export interface Hex {
+  red?: string,
+  green?: string,
+  blue?: string
+}

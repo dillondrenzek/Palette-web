@@ -2,13 +2,21 @@
   <!-- color -->
   <div class="col-xs-4 color" [style.background]="backgroundColor" [style.height.px]="200"></div>
   <color-input class="col-xs-4" [color]="color" (onChange)="colorChanged($event)"></color-input>
+  <div class="col-xs-4 buttons">
+    <button type="button" class="btn btn-default col-xs-12"
+      (click)="onSave()">Save Color</button>
+  </div>
 </div>
 
 
 <div class="col-xs-12 col-sm-8">
 
+  <p>
+    Hex: {{hexColor}}
+  </p>
+
   <p *ngFor="let color of savedColors">
-    {{color}}
+    {{color.toRGBString()}}
   </p>
 
 </div>

@@ -44,7 +44,7 @@ export class ColorInputComponent {
 
     this.form.valueChanges.subscribe((value: Color) => {
       console.info('ColorInput value change:', value);
-      this.onChange.emit(value);
+      this.onChange.emit(new Color(value));
     });
   }
 }
