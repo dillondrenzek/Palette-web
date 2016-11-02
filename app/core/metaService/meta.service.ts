@@ -5,9 +5,7 @@ import { Observable, Subscriber } from 'rxjs/Rx';
 @Injectable()
 export class MetaService {
 
-  constructor(private http: Http) {
-
-  }
+  constructor(private http: Http) {}
 
   getAppVersion(): Observable<string> {
     return Observable.create(( obs: Subscriber<string> ) => {

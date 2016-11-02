@@ -5,13 +5,6 @@ import { Observable } from 'rxjs/Rx';
 import { Color } from '../Color';
 import { RGB } from '../interfaces';
 
-// import { colorInputProvider } from './provider';
-
-interface FormValue {
-  fc1: number,
-  fc2: number,
-  fc3: number
-}
 
 interface ColorComponent {
   label: string,
@@ -43,11 +36,19 @@ export class ColorInputComponent {
   // colorMode - a string that determines which inputs to show
   @Input() colorMode: string = 'rgb';
 
+  // colorComponents - an array of objects used to help display the form (labels, name, etc.)
   private colorComponents: ColorComponent[] = [];
 
   // colorChange - event emitted when form value changes
   @Output() colorChange = new EventEmitter<Color>();
 
+
+
+
+
+  /**
+   * When `colorMode` changes
+   */
   private onColorModeInput() {
     if (this.colorMode) {
       this.colorComponents = [];
@@ -55,10 +56,13 @@ export class ColorInputComponent {
       this.colorMode.split('').forEach((el: string) => {
         this.colorComponents.push(this.getColorComponent(el));
       });
-
     }
   }
 
+
+  /**
+   * Get a `ColorComponent` given a character from the `colorMode` string
+   */
   private getColorComponent(colorChar: string): ColorComponent {
     switch (colorChar) {
       case 'r':
@@ -80,11 +84,16 @@ export class ColorInputComponent {
     }
   }
 
-
+  /**
+   * When `color` changes
+   */
   private onColorInput() {
     if (this.color) this.setFormColor(this.color);
   }
 
+  /**
+   * Set value of `form` with a `Color`
+   */
   private setFormColor(color: Color) {
     this.form.setValue({
       red: this.color.red || null,
@@ -93,14 +102,16 @@ export class ColorInputComponent {
     });
   }
 
+  /**
+   * Get value from `form` in the form of a `Color`
+   */
   private getFormColor(): Color {
     return new Color(this.form.value);
   }
 
   ngOnInit() {
-
     // Subscribe form value
-    this.form.valueChanges.subscribe((value: FormValue) => {
+    this.form.valueChanges.subscribe((value: any) => {
       this.color = this.getFormColor();
       this.colorChange.emit(this.color);
     });

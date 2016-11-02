@@ -3,6 +3,7 @@
   <!-- Color Form -->
   <form class="form-group col-xs-12" [formGroup]="form">
 
+    <!-- Color Component -->
     <div class="color-component clearfix" *ngFor="let comp of colorComponents">
       <label>{{comp.label}}</label>
       <input type="number" class="form-control" [formControlName]="comp.name">

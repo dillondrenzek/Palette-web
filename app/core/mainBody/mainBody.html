@@ -1,11 +1,9 @@
 <div id="single-color-form" class="col-xs-12 col-sm-4">
 
-  <!-- color -->
-  <div class="col-xs-12 color" [style.background]="backgroundColor" [style.height.px]="200"></div>
-
-  <!-- <p>
-    Hex: {{hexColor}}
-  </p> -->
+  <!-- color swatch -->
+  <div class="col-xs-12 color"
+    [style.background]="swatchBackground"
+    [style.height.px]="200"></div>
 
   <!-- color input -->
   <color-input class="col-xs-12"
@@ -26,7 +24,7 @@
 
   <ol>
     <li *ngFor="let color of savedColors" (click)="selectColor(color)">
-      {{color.toRGBString()}}
+      {{color.toRgbString()}}
     </li>
   </ol>
 

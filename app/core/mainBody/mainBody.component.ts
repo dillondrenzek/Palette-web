@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Color, RGB, toHexString, stringToRGB } from '@palette/color';
+import { Color, RGB, stringToRGB } from '@palette/color';
 
 @Component({
   selector: 'main-body',
@@ -10,35 +10,29 @@ import { Color, RGB, toHexString, stringToRGB } from '@palette/color';
 })
 export class MainBody {
 
+  // Locally saved `Color`s
   savedColors: Color[] = [];
 
+  // `Color` currently displaying in the form
   color: Color;
 
-  get hexColor(): string {
-    return toHexString(this.color);
+  // template method for coloring the swatch's background
+  get swatchBackground(): string {
+    return this.color.toRgbString();
   }
 
-  get backgroundColor(): string {
-    let str = [0,0,0];
-
-    if (this.color) {
-      str[0] = this.color.red;
-      str[1] = this.color.green;
-      str[2] = this.color.blue;
-    }
-
-    return ["rgb(", str[0], ',', str[1], ',', str[2], ")"].join('');
-  }
-
+  // Event for when a color is selected in the list
   selectColor(color: Color) {
     this.color = color;
   }
 
+  // Event when the color inputs value changes
   colorChanged(c: Color) {
     console.info('colorChanged(',c,')');
     this.color = c;
   }
 
+  // Event when the save button is clicked
   onSave() {
     console.info('onSave(', this.color,')');
     this.savedColors.push(this.color);

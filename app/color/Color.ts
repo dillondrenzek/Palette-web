@@ -1,6 +1,4 @@
-import { validColorValue } from './validation/functions';
-import { RGB, HSL, Hex } from './interfaces';
-import { toHexString, toHex } from './converters/hex';
+import { RGB } from './interfaces';
 import { toRgbString, stringToRGB } from './converters/rgb';
 
 /**
@@ -47,7 +45,7 @@ export class Color {
 
   // String
 
-  toRGBString(): string {
+  toRgbString(): string {
     return toRgbString(this);
   }
 }
