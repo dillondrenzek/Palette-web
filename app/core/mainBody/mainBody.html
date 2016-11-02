@@ -1,5 +1,7 @@
 <div id="single-color-form" class="col-xs-12 col-sm-4">
 
+  <h2 class="page-header">Current Color</h2>
+
   <!-- color swatch -->
   <div class="col-xs-12 color"
     [style.background]="swatchBackground"
@@ -22,10 +24,13 @@
 
 <div class="col-xs-12 col-sm-8">
 
-  <ol>
-    <li *ngFor="let color of savedColors" (click)="selectColor(color)">
+  <h2 class="page-header">Saved Colors</h2>
+
+  <div class="list-group">
+    <a class="list-group-item" *ngFor="let color of savedColors" (click)="selectColor(color)">
+      <div class="swatch" [style.height.px]="24" [style.width.px]="24" [style.background]="color.toRgbString()"></div>
       {{color.toRgbString()}}
-    </li>
-  </ol>
+    </a>
+  </div>
 
 </div>
