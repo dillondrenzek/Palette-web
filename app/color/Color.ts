@@ -10,7 +10,7 @@ import { toRgbString } from './converters/rgb';
 export class Color {
 
   // Raw Data Store
-  _rgb: RGB = { red: 0, green: 0, blue: 0 };
+  _rgb: RGB = { red: null, green: null, blue: null };
 
   /**
    * @param { RGB } - object w/ red, green, blue number values

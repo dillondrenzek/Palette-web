@@ -7,6 +7,17 @@ import { RGB } from '../interfaces';
 
 // import { colorInputProvider } from './provider';
 
+interface FormValue {
+  fc1: number,
+  fc2: number,
+  fc3: number
+}
+
+interface ColorComponent {
+  label: string,
+  name: string
+}
+
 @Component({
   selector: 'color-input',
   templateUrl: './colorInput.html',
@@ -15,36 +26,88 @@ import { RGB } from '../interfaces';
 })
 export class ColorInputComponent {
 
-  @HostBinding('style.backgroundColor') background: string;
-
-  form: FormGroup;
-
-  // Private color reference
-  private _color: Color = new Color();
-
-  @Input()
-  set color(c: Color) {
-    if (c) {
-      this._color = c;
-      if (c.toRGB) {
-        this.form.setValue(c.toRGB());
-      }
-    }
-  }
-  get color(): Color { return this._color; }
-
-  @Output() onChange = new EventEmitter<Color>();
-
+  // ColorInputComponent
   constructor() {
     this.form = new FormGroup({
       red: new FormControl(''),
       green: new FormControl(''),
       blue: new FormControl('')
     });
+  }
 
-    this.form.valueChanges.subscribe((value: Color) => {
-      console.info('ColorInput value change:', value);
-      this.onChange.emit(new Color(value));
+  // form - HTML Form Model
+  form: FormGroup;
+
+  @Input() color: Color = new Color();
+
+  // colorMode - a string that determines which inputs to show
+  @Input() colorMode: string = 'rgb';
+
+  private colorComponents: ColorComponent[] = [];
+
+  // colorChange - event emitted when form value changes
+  @Output() colorChange = new EventEmitter<Color>();
+
+  private onColorModeInput() {
+    if (this.colorMode) {
+      this.colorComponents = [];
+      // split color mode into characters
+      this.colorMode.split('').forEach((el: string) => {
+        this.colorComponents.push(this.getColorComponent(el));
+      });
+
+    }
+  }
+
+  private getColorComponent(colorChar: string): ColorComponent {
+    switch (colorChar) {
+      case 'r':
+        return {
+          label: 'R',
+          name: 'red'
+        };
+      case 'g':
+        return {
+          label: 'G',
+          name: 'green'
+        };
+      case 'b':
+        return {
+          label: 'B',
+          name: 'blue'
+        };
+      default: return null;
+    }
+  }
+
+
+  private onColorInput() {
+    if (this.color) this.setFormColor(this.color);
+  }
+
+  private setFormColor(color: Color) {
+    this.form.setValue({
+      red: this.color.red || null,
+      green: this.color.green || null,
+      blue: this.color.blue || null
     });
+  }
+
+  private getFormColor(): Color {
+    return new Color(this.form.value);
+  }
+
+  ngOnInit() {
+
+    // Subscribe form value
+    this.form.valueChanges.subscribe((value: FormValue) => {
+      this.color = this.getFormColor();
+      this.colorChange.emit(this.color);
+    });
+  }
+
+  ngOnChanges(change: any) {
+    if (change.color) { this.onColorInput(); }
+    if (change.colorMode) { this.onColorModeInput(); }
   }
 }

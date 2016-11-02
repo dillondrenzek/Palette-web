@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Color, RGB, toHexString } from '@palette/color';
+import { Color, RGB, toHexString, stringToRGB } from '@palette/color';
 
 @Component({
   selector: 'main-body',
@@ -28,6 +28,10 @@ export class MainBody {
     }
 
     return ["rgb(", str[0], ',', str[1], ',', str[2], ")"].join('');
+  }
+
+  selectColor(color: Color) {
+    this.color = color;
   }
 
   colorChanged(c: Color) {
