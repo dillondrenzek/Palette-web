@@ -1,7 +1,7 @@
 import { validColorValue } from './validation/functions';
 import { RGB, HSL, Hex } from './interfaces';
 import { toHexString, toHex } from './converters/hex';
-import { toRgbString } from './converters/rgb';
+import { toRgbString, stringToRGB } from './converters/rgb';
 
 /**
  * Color
@@ -15,8 +15,14 @@ export class Color {
   /**
    * @param { RGB } - object w/ red, green, blue number values
    */
-  constructor( colorObj?: RGB ) {
-    if (colorObj) { this._rgb = colorObj; }
+  constructor( colorObj?: RGB | string ) {
+    if (colorObj) {
+      if (colorObj['red']) {
+        this._rgb = colorObj;
+      } else if (typeof colorObj == 'string') {
+        this._rgb = stringToRGB(colorObj);
+      }
+    }
   }
 
   // Get Red
@@ -37,67 +43,11 @@ export class Color {
 
   toRGB(): RGB { return this._rgb; }
 
-  // toHSL(): HSL { return toHSL(this); }
-
-  toHex(): Hex { return toHex(this); }
-
 
 
   // String
 
   toRGBString(): string {
     return toRgbString(this);
-  }
-
-  toHexString(withSymbol: boolean = true): string {
-    return toHexString(this, withSymbol);
-  }
-}
-
-
-
-
-
-
-
-
-
-
-export class ColorValue {
-
-  // Raw color value is kept on 0 to 1 scale
-  constructor(private _value: number = null) {}
-  private set value(v: number) {
-    if ( v >= 0 && v <= 1 ) {
-      this._value = v;
-    }
-  }
-  private get value(): number { return this._value; }
-
-
-  static hex(input: any): ColorValue {
-    return null;
-  }
-
-  static percent(input: any): ColorValue {
-    return null;
-  }
-
-  static 255(input: any): ColorValue {
-
-    if (typeof input === 'string') {
-      input = parseInt(input);
-    }
-
-    if (typeof input === 'number') {
-
-      input = (input < 0) ? 0 : input;
-      input = (input > 255) ? 255 : input;
-      input = input / 255;
-
-      return new ColorValue(input);
-    }
-
-    return null;
   }
 }
