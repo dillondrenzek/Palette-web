@@ -11,7 +11,13 @@ import { Color, RGB, stringToRGB } from '@palette/color';
 export class MainBody {
 
   // Locally saved `Color`s
-  savedColors: Color[] = [];
+  savedColors: Color[] = [
+    new Color('rgb(82,133,161)'),
+    new Color('rgb(136,14,143)'),
+    new Color('rgb(246,73,79)'),
+    new Color('rgb(252,131,77)'),
+    new Color('rgb(255,200,54)')
+  ];
 
   // `Color` currently displaying in the form
   color: Color;
