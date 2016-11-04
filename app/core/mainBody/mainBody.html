@@ -22,15 +22,54 @@
 </div>
 
 
-<div class="col-xs-12 col-sm-8">
+<div class="col-xs-12 col-sm-4">
 
-  <h2 class="page-header">Saved Colors</h2>
+  <header class="page-header col-xs-12">
+    <h2>Saved Colors</h2>
+  </header>
 
-  <div class="list-group">
-    <a class="list-group-item" *ngFor="let color of savedColors" (click)="selectColor(color)">
-      <div class="swatch" [style.height.px]="24" [style.width.px]="24" [style.background]="color.toRgbString()"></div>
-      {{color.toRgbString()}}
-    </a>
+
+  <div class="btn-group col-xs-12">
+    <button type="button" class="btn btn-default" (click)="onSavePalette()">Save Palette</button>
+    <button type="button" class="btn btn-default" (click)="onClear()">Clear</button>
+  </div>
+
+
+
+  <div class="col-xs-12">
+    <div class="list-group">
+      <a class="list-group-item disabled center" *ngIf="!savedColors.length">No saved colors.</a>
+      <a class="list-group-item" *ngFor="let color of savedColors" (click)="selectColor(color)">
+        <color-swatch [color]="color" [size]="24"></color-swatch>
+        <!-- <div class="swatch" [style.height.px]="24" [style.width.px]="24" [style.background]="color.toRgbString()"></div> -->
+        <span>{{color.toRgbString()}}</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<div class="col-xs-12 col-sm-4">
+
+  <header class="page-header col-xs-12">
+    <h2>Saved Palettes</h2>
+  </header>
+
+
+  <!-- <div class="btn-group col-xs-12">
+    <button type="button" class="btn btn-default" (click)="onClear()">Save</button>
+    <button type="button" class="btn btn-default" (click)="onClear()">Clear</button>
+  </div> -->
+
+
+
+  <div class="col-xs-12">
+    <div class="list-group">
+      <a class="list-group-item disabled center" *ngIf="!savedPalettes.length">No saved palettes.</a>
+      <a class="list-group-item" *ngFor="let palette of savedPalettes" (click)="selectPalette(palette)">
+        <span>{{palette.length}} color Palette</span>
+      </a>
+    </div>
   </div>
 
 </div>

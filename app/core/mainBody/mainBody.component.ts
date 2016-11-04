@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 
 import { Color, RGB, stringToRGB } from '@palette/color';
 
+
+type Palette = Color[];
+
 @Component({
   selector: 'main-body',
   moduleId: module.id,
@@ -19,6 +22,8 @@ export class MainBody {
     new Color('rgb(255,200,54)')
   ];
 
+  savedPalettes: Palette[] = [];
+
   // `Color` currently displaying in the form
   color: Color;
 
@@ -32,6 +37,10 @@ export class MainBody {
     this.color = color;
   }
 
+  selectPalette(palette: Palette) {
+    this.savedColors = palette;
+  }
+
   // Event when the color inputs value changes
   colorChanged(c: Color) {
     console.info('colorChanged(',c,')');
@@ -42,6 +51,15 @@ export class MainBody {
   onSave() {
     console.info('onSave(', this.color,')');
     this.savedColors.push(this.color);
+  }
+
+  onSavePalette() {
+    let palette = this.savedColors.slice();
+    this.savedPalettes.push(palette);
+  }
+
+  onClear() {
+    this.savedColors = [];
   }
 
   ngOnInit() {

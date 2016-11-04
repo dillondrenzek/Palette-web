@@ -1,3 +1,13 @@
+#v0.2.2 (11-3-16)
+* Save Palettes
+* Change active Palette
+
+---
+#v0.2.1 (11-3-16)
+* Added ColorSwatch
+* Clear Saved Colors
+
+---
 #v0.2.0 (11-1-16)
 * RGB Mode only for now
 * `Color` can be init with a string now
