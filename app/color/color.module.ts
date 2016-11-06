@@ -4,6 +4,7 @@ import { FormsModule,
   ReactiveFormsModule } from '@angular/forms';
 
 import { ColorInputComponent } from './colorInput/colorInput.component';
+import { ColorEditorComponent } from './colorEditor/colorEditor.component';
 import { ColorSwatch } from './colorSwatch/colorSwatch.component';
 
 @NgModule({
@@ -14,10 +15,12 @@ import { ColorSwatch } from './colorSwatch/colorSwatch.component';
   ],
   declarations: [
     ColorInputComponent,
+    ColorEditorComponent,
     ColorSwatch
   ],
   exports: [
     ColorInputComponent,
+    ColorEditorComponent,
     ColorSwatch
   ]
 })

@@ -1,5 +1,5 @@
 import { RGB } from './interfaces';
-import { toRgbString, stringToRGB } from './converters/rgb';
+import { toRgbString, stringToRGB } from '@palette/converters';
 
 /**
  * Color

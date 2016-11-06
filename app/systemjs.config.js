@@ -17,6 +17,8 @@
       '@palette/core': 'app/core/index.js',
       '@palette/color': 'app/color/index.js',
       '@palette/palette': 'app/palette/index.js',
+      '@palette/converters': 'app/converters/index.js',
+      '@palette/generators': 'app/generators/index.js',
 
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',

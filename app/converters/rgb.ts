@@ -1,5 +1,4 @@
-import { Color } from '../Color';
-import { RGB } from '../interfaces';
+import { Color, RGB } from '@palette/color';
 
 export function stringToRGB(str: string): RGB {
   if (!str) return null;

@@ -1,23 +1,8 @@
-<div id="single-color-form" class="col-xs-12 col-sm-4">
+<div id="color-editor-wrapper" class="col-xs-12 col-sm-4">
 
-  <h2 class="page-header">Current Color</h2>
-
-  <!-- color swatch -->
-  <div class="col-xs-12 color"
-    [style.background]="swatchBackground"
-    [style.height.px]="200"></div>
-
-  <!-- color input -->
-  <color-input class="col-xs-12"
-    [colorMode]="'rgb'"
-    [color]="color"
-    (colorChange)="colorChanged($event)"></color-input>
-
-  <!-- buttons -->
-  <div class="col-xs-12 buttons">
-    <button type="button" class="btn btn-default col-xs-12"
-      (click)="onSave()">Save Color</button>
-  </div>
+  <color-editor [color]="color"
+    (colorChange)="editorColorChange($event)"
+    (colorSave)="editorColorSave($event)"></color-editor>
 
 </div>
 
