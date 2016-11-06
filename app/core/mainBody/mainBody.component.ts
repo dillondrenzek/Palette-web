@@ -58,6 +58,10 @@ export class MainBody {
     this.savedPalettes.push(palette);
   }
 
+  onClearPalettes() {
+    this.savedPalettes = [];
+  }
+
   onClear() {
     this.savedColors = [];
   }
