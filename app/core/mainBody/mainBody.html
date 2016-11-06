@@ -1,4 +1,9 @@
+<!-- Color Editor -->
 <div id="color-editor-wrapper" class="col-xs-12 col-sm-4">
+
+  <header class="page-header col-xs-12">
+    <h2>Current Color</h2>
+  </header>
 
   <color-editor [color]="color"
     (colorChange)="editorColorChange($event)"
@@ -7,26 +12,24 @@
 </div>
 
 
+<!-- Palette Editor -->
 <div class="col-xs-12 col-sm-4">
 
   <header class="page-header col-xs-12">
-    <h2>Saved Colors</h2>
+    <h2>Current Palette</h2>
   </header>
 
-
   <div class="btn-group col-xs-12">
-    <button type="button" class="btn btn-default" (click)="onSavePalette()">Save Palette</button>
-    <button type="button" class="btn btn-default" (click)="onClear()">Clear Palette</button>
+    <button type="button" class="btn btn-default" (click)="onGeneratePalette()">Generate</button>
+    <button type="button" class="btn btn-default" (click)="onSavePalette()">Save</button>
+    <button type="button" class="btn btn-default" (click)="onClearPalette()">Clear</button>
   </div>
-
-
 
   <div class="col-xs-12">
     <div class="list-group">
-      <a class="list-group-item disabled center" *ngIf="!savedColors.length">No saved colors.</a>
-      <a class="list-group-item" *ngFor="let color of savedColors" (click)="selectColor(color)">
+      <a class="list-group-item disabled center" *ngIf="!palette.colors.length">Palette is empty.</a>
+      <a class="list-group-item" *ngFor="let color of palette.colors" (click)="selectColor(color)">
         <color-swatch [color]="color" [size]="24"></color-swatch>
-        <!-- <div class="swatch" [style.height.px]="24" [style.width.px]="24" [style.background]="color.toRgbString()"></div> -->
         <span>{{color.toRgbString()}}</span>
       </a>
     </div>
@@ -34,24 +37,25 @@
 
 </div>
 
+
+
 <div class="col-xs-12 col-sm-4">
 
   <header class="page-header col-xs-12">
     <h2>Saved Palettes</h2>
   </header>
 
-
   <div class="btn-group col-xs-12">
     <button type="button" class="btn btn-default" (click)="onClearPalettes()">Delete All</button>
   </div>
 
-
-
   <div class="col-xs-12">
     <div class="list-group">
       <a class="list-group-item disabled center" *ngIf="!savedPalettes.length">No saved palettes.</a>
-      <a class="list-group-item" *ngFor="let palette of savedPalettes" (click)="selectPalette(palette)">
-        <palette class="clearfix" [palette]="palette"></palette>
+      <a class="list-group-item" *ngFor="let palette of savedPalettes" (click)="onSelectPalette(palette)">
+        <div class="row">
+          <palette class="clearfix" [palette]="palette"></palette>
+        </div>
       </a>
     </div>
   </div>

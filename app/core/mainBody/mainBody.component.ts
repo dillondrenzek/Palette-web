@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 
-import { Color, RGB, stringToRGB } from '@palette/color';
+import { Color, RGB } from '@palette/color';
 import { Palette } from '@palette/palette';
-import { randomColor } from '@palette/generators';
+import { randomColor, shadesPalette } from '@palette/generators';
+import { stringToRGB } from '@palette/converters';
 
-
+// function shadesPalette(color: Color, number: number) {
+//   return new Palette([]);
+// }
 
 @Component({
   selector: 'main-body',
@@ -34,9 +37,13 @@ export class MainBody {
     new Palette([
       new Color('rgb(205,20,4)'),
       new Color('rgb(87,183,47)'),
-      new Color('rgb(61,133,136)')
+      new Color('rgb(61,133,136)'),
+      new Color('rgb(94,23,94)')
     ])
   ];
+
+  // `Palette` currently displaying in the forms
+  palette: Palette = new Palette([]);
 
   // `Color` currently displaying in the form
   color: Color;
@@ -46,9 +53,7 @@ export class MainBody {
     this.color = color;
   }
 
-  selectPalette(palette: Palette) {
-    this.savedColors = palette.colors;
-  }
+
 
   /**
    * `ColorEditor` color change event
@@ -66,18 +71,28 @@ export class MainBody {
 
 
 
+  onGeneratePalette() {
+    this.palette = shadesPalette(this.color, 4);
+    console.info('generated palette:', this.palette);
+  }
+
   onSavePalette() {
-    let palette = new Palette(this.savedColors.slice());
-    this.savedPalettes.push(palette);
+    this.savedPalettes.push(this.palette);
+  }
+
+  onClearPalette() {
+    this.palette = new Palette();
+  }
+
+  onSelectPalette(palette: Palette) {
+    this.palette = palette;
   }
 
   onClearPalettes() {
     this.savedPalettes = [];
   }
 
-  onClear() {
-    this.savedColors = [];
-  }
+
 
   ngOnInit() {
     this.color = new Color({

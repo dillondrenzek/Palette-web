@@ -1,11 +1,11 @@
-// Components
-export { ColorInputComponent } from './colorInput/colorInput.component';
+// Interfaces
+export { RGB } from './interfaces';
 
 // Classes
 export { Color } from './Color';
 
-// Interfaces
-export { RGB } from './interfaces';
+// Components
+export { ColorInputComponent } from './colorInput/colorInput.component';
 
 // NgModule
 export { ColorModule } from './color.module';
