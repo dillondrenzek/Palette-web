@@ -1,3 +1,8 @@
+#v0.2.4 (11-5-16)
+* Added `converters`, `generators` modules
+* Generate random `Color`
+
+---
 #v0.2.3 (11-5-16)
 * Added `palette` module
 * Added PaletteComponent
