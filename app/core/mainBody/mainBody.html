@@ -66,7 +66,7 @@
     <div class="list-group">
       <a class="list-group-item disabled center" *ngIf="!savedPalettes.length">No saved palettes.</a>
       <a class="list-group-item" *ngFor="let palette of savedPalettes" (click)="selectPalette(palette)">
-        <span>{{palette.length}} color Palette</span>
+        <palette class="clearfix" [palette]="palette"></palette>
       </a>
     </div>
   </div>

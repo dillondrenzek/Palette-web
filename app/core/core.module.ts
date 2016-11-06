@@ -4,6 +4,7 @@ import { HttpModule }         from '@angular/http';
 import { FormsModule }        from '@angular/forms';
 
 import { ColorModule }        from '@palette/color';
+import { PaletteModule }      from '@palette/palette';
 
 import { AppComponent }         from './appComponent/app.component';
 import { MainHeader }           from './mainHeader/mainHeader.component';
@@ -16,7 +17,8 @@ import { MetaService }          from './metaService/meta.service';
     BrowserModule,
     HttpModule,
     FormsModule,
-    ColorModule
+    ColorModule,
+    PaletteModule
   ],
   declarations: [
     AppComponent,
