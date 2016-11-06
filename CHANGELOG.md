@@ -1,3 +1,9 @@
+#v0.2.3 (11-5-16)
+* Added `palette` module
+* Added PaletteComponent
+* Added Palette model class
+
+---
 #v0.2.2 (11-3-16)
 * Save Palettes
 * Change active Palette
