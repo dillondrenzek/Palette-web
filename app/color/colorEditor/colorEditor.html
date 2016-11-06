@@ -1,20 +1,20 @@
-<h2 class="page-header">Current Color</h2>
+<!-- buttons -->
+<div class="btn-group col-xs-12 buttons">
+  <button type="button" class="btn btn-default" (click)="onRandomClick()">Random</button>
+  <button type="button" class="btn btn-default" (click)="onSaveClick()">Save</button>
+</div>
+
+
 
 <!-- color swatch -->
 <div class="col-xs-12 color"
   [style.background]="swatchBackground"
   [style.height.px]="100"></div>
 
+
+
 <!-- color input -->
 <color-input class="col-xs-12"
   [colorMode]="'rgb'"
   [color]="color"
   (colorChange)="onColorInputChange($event)"></color-input>
-
-<!-- buttons -->
-<div class="col-xs-12 buttons">
-  <button type="button" class="btn btn-default col-xs-12"
-    (click)="onSaveClick()">Save Color</button>
-    <button type="button" class="btn btn-default col-xs-12"
-      (click)="onRandomClick()">Random</button>
-</div>
